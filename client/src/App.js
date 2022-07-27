@@ -2,7 +2,7 @@
 
 function App() {
   return (
-    <h1>Hello</h1>
+    <h1>hi boy</h1>
   );
 }
 
