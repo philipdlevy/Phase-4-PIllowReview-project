@@ -1,9 +1,9 @@
 import React from 'react'
 
-function NavBar() {
+function ContactUs() {
   return (
     <></>
   )
 }
 
-export default NavBar
+export default ContactUs

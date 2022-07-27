@@ -8,16 +8,22 @@ import HomePage from "./HomePage"
 import AddReview from "./AddReview"
 import EditReview from "./EditReview"
 import ItemLister from "./ItemLister"
+import ContactUs from "./ContactUs"
 
 function App() {
   return (
-    <Item />,
-    <NavBar />,
-    <ItemDetail />,
-    <HomePage />, 
-    <AddReview />, 
-    <EditReview />, 
-    <ItemLister />
+    <div className="backgroundPicture">
+
+      <Item />
+      <NavBar />
+      <ItemDetail />
+      <HomePage />
+      <AddReview />
+      <EditReview />
+      <ItemLister />
+      <ContactUs />
+
+    </div>
   );
 }
 
