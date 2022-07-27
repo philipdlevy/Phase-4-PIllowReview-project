@@ -28,7 +28,7 @@
     position: fixed;
     padding-left: 15px;
     color: #8fbc8f;
-    filter: brightness(100%);
+    filter: brightness(110%);
 }
 
 
@@ -55,7 +55,6 @@
   touch-action: manipulation;
   width: 8%;
   position: fixed; right: 0px;
-
 }
 
 
@@ -76,5 +75,75 @@
   box-shadow: none;
 }
 
+.button-26 {
+    background-color: #8fbc8f;
+    background-image: linear-gradient(#8fbc8f, #8fbc8f);
+    border: 1px solid #8fbc8f;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-family: -apple-system,".SFNSDisplay-Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 17px;
+    line-height: 380%;
+    margin: 0;
+    outline: 0;
+    padding: 11px 15px 12px;
+    text-align: center;
+    transition: box-shadow .05s ease-in-out,opacity .05s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 8%;
+    position: fixed; right: 200px;
+  }
 
+  .button-27 {
+    background-color: #8fbc8f;
+    background-image: linear-gradient(#8fbc8f, #8fbc8f);
+    border: 1px solid #8fbc8f;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-family: -apple-system,".SFNSDisplay-Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 17px;
+    line-height: 380%;
+    margin: 0;
+    outline: 0;
+    padding: 11px 15px 12px;
+    text-align: center;
+    transition: box-shadow .05s ease-in-out,opacity .05s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 8%;
+    position: fixed; right: 400px;
+  }
+
+  .button-28 {
+    background-color: #8fbc8f;
+    background-image: linear-gradient(#8fbc8f, #8fbc8f);
+    border: 1px solid #8fbc8f;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-family: -apple-system,".SFNSDisplay-Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 17px;
+    line-height: 380%;
+    margin: 0;
+    outline: 0;
+    padding: 11px 15px 12px;
+    text-align: center;
+    transition: box-shadow .05s ease-in-out,opacity .05s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 8%;
+    position: fixed; right: 600px;
+  }
 
