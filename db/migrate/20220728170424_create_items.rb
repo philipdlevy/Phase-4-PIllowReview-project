@@ -6,8 +6,6 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.text :description
       t.string :image_url
 
-      t.belongs_to :cart, null: false, foreign_key: true
-
       t.timestamps
     end
   end

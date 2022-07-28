@@ -23,20 +23,8 @@ Models
 - item
 
 Associations and attributes:
-# Cart
-- cart belongs_to :user
-- has_many :items
-
-# Attributes
-- is_active? :boolean
-
-
-
-
------------------------------------------
 
 # User
-- has_many :carts
 - has_many :reviews
 - has_many :items, through: :carts
 
@@ -49,7 +37,6 @@ Associations and attributes:
 -----------------------------------------
 
 # Item
-- belongs_to :cart
 - has_many :reviews
 
 # Attributes
@@ -57,7 +44,6 @@ Associations and attributes:
 - price :float
 - description :text
 - image_url :string
-
 
 
 
