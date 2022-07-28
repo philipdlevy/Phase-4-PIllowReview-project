@@ -11,6 +11,7 @@ import ItemLister from "./ItemLister"
 import ContactUs from "./ContactUs"
 import AddItem from "./AddItem"
 import EditItem from "./EditItem"
+import Login from "./Login"
 
 function App() {
   return (
@@ -26,6 +27,11 @@ function App() {
       <ItemLister />
       <AddItem />
       <EditItem />
+
+      <Route exact path="/login">
+        <Login />
+      </Route>
+      
 
       <Route>
         <ContactUs />
