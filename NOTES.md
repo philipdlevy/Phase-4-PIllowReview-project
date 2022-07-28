@@ -1,23 +1,21 @@
-Online pillow store
+Online pillow review website
 
 Overview: (Features)
 - User(customer)
 - Items
 - Reviews
-- Cart
 - Login/out
 
 
 MVP:
 - Login/out
 - look at items
-- put items in a cart
 - leave a review
+- create, update, delete and see items
 - create, update, delete and see reviews
 
 
 Models
-- cart
 - user
 - review
 - item
@@ -32,8 +30,6 @@ Associations and attributes:
 - username :string
 - password_digest :string
 
-
-
 -----------------------------------------
 
 # Item
@@ -44,8 +40,6 @@ Associations and attributes:
 - price :float
 - description :text
 - image_url :string
-
-
 
 -----------------------------------------
 

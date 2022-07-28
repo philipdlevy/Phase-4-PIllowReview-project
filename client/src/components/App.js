@@ -9,6 +9,8 @@ import AddReview from "./AddReview"
 import EditReview from "./EditReview"
 import ItemLister from "./ItemLister"
 import ContactUs from "./ContactUs"
+import AddItem from "./AddItem"
+import EditItem from "./EditItem"
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
       <AddReview />
       <EditReview />
       <ItemLister />
+      <AddItem />
+      <EditItem />
 
       <Route>
         <ContactUs />
