@@ -13,15 +13,28 @@ import ContactUs from "./ContactUs"
 function App() {
   return (
     <div className="backgroundPicture">
+      <NavBar />
+      <Switch>
 
       <Item />
-      <NavBar />
       <ItemDetail />
       <HomePage />
       <AddReview />
       <EditReview />
       <ItemLister />
-      <ContactUs />
+
+      <Route>
+        <ContactUs />
+      </Route>
+
+      <Route>
+        <h1>
+          <strong>404</strong>
+          <h3><strong>ERROR! PAGE NOT FOUND</strong></h3>
+        </h1>
+      </Route>
+
+      </Switch>
 
     </div>
   );
