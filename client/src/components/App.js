@@ -14,22 +14,62 @@ import EditItem from "./EditItem"
 import Login from "./Login"
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+
+  function handleLogin(user) {
+    setUser(user);
+  }
+
+  function handleLogout() {
+    setUser(null)
+  }
+
+  // if (user) {
+  //   return <h2>Welcome, {user.username}!</h2>;
+  // } else {
+  //   return <Login onLogin={setUser} />;
+  // }
+
   return (
     <div className="backgroundPicture">
-      <NavBar />
+      <NavBar user={user} onLogout={handleLogout} />
       <Switch>
 
-      <Item />
-      <ItemDetail />
-      <HomePage />
-      <AddReview />
-      <EditReview />
-      <ItemLister />
-      <AddItem />
-      <EditItem />
+      <Route exact path="/items/:id">
+        <Item />
+      </Route>
+      <Route>
+        <ItemDetail />
+      </Route>
+      <Route>
+        <HomePage />
+      </Route>
+      <Route>
+        <AddReview />
+      </Route>
+      <Route>
+        <EditReview />
+      </Route>
+      <Route>
+        <ItemLister />
+      </Route>
+      <Route>
+        <AddItem />
+      </Route>
+      <Route>
+        <EditItem />
+      </Route>
 
       <Route exact path="/login">
-        <Login />
+        <Login onLogin={handleLogin}/>
       </Route>
       
 
