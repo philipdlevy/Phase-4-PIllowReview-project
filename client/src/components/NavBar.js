@@ -22,20 +22,22 @@ function NavBar({onLogout}) {
       </Link>
 
       <NavLink to="/contact" exact>
-        <button class="button-26" role="button">Contact Us</button>
+        <button class="button-26" >Contact Us</button>
       </NavLink>
 
       <NavLink to="/items/new" exact>
-        <button class="button-27" role="button">Add Item</button>
+        <button class="button-27" >Add Item</button>
       </NavLink>
 
       <NavLink to="/login">
-        <button class="button-25" role="button">SignIn/Up</button>
+        <button class="button-25" >SignIn/Up</button>
       </NavLink>
 
-      <button class="button-28" role="button">See All Items</button>
+      <button class="button-28" >See All Items</button>
     </div>
   );
 }
 
 export default NavBar
+
+// role="button" after class for buttons, only a space, no commas
