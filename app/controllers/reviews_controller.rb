@@ -11,10 +11,25 @@ class ReviewsController < ApplicationController
     end
 
     def create
-        review = Review.create(review_params)
-        # byebug
-        render json: review
+        user = User.find_by(id: session[:user_id])
+        if user
+            review = user.reviews.create(review_params)
+            if review.valid?
+                render json: review, status: :created
+            else
+                render json: {errors: ["Unprocessable Entity"]}, status: :unprocessable_entity
+            end
+        else
+            render json: {errors: ["Unauthorized"]}, status: :unauthorized
+        end
     end
+
+    def destroy
+        review = Review.find(params[:id])
+        review.destroy
+        head :no_content
+    end
+
 
 
     private

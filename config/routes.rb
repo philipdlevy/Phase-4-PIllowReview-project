@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  resources :reviews, only: [:show, :index, :create]
-  resources :items, only: [:show, :index, :create]
+  resources :reviews, only: [:show, :index, :create, :destroy]
+  resources :items, only: [:show, :index, :create, :destroy]
   resources :users, only: [:show, :create]
 
   # Custom routes
-
   post "/login", to: "sessions#create"
   get "/me", to: "users#show"
   delete "/logout", to: "sessions#destroy"
