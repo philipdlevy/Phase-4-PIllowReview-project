@@ -1,15 +1,15 @@
 import React, {useState, useEffect} from "react"
 import {Route, Switch} from 'react-router-dom'
 
-import Item from "./Item"
 import NavBar from "./NavBar"
-import ItemDetail from "./ItemDetail"
 import HomePage from "./HomePage"
+import AddItem from "./AddItem"
+import Item from "./Item"
+import ItemDetail from "./ItemDetail"
 import AddReview from "./AddReview"
 import EditReview from "./EditReview"
 import ItemLister from "./ItemLister"
 import ContactUs from "./ContactUs"
-import AddItem from "./AddItem"
 import EditItem from "./EditItem"
 import Login from "./Login"
 
@@ -43,14 +43,18 @@ function App() {
       <NavBar user={user} onLogout={handleLogout} />
       <Switch>
 
+
+      <Route exact path="/">
+        <HomePage />
+      </Route>
       <Route exact path="/items/:id">
         <Item />
       </Route>
-      <Route>
-        <ItemDetail />
+      <Route exact path="/items/new">
+        <AddItem />
       </Route>
       <Route>
-        <HomePage />
+        <ItemDetail />
       </Route>
       <Route>
         <AddReview />
@@ -62,9 +66,6 @@ function App() {
         <ItemLister />
       </Route>
       <Route>
-        <AddItem />
-      </Route>
-      <Route>
         <EditItem />
       </Route>
 
@@ -73,7 +74,7 @@ function App() {
       </Route>
       
 
-      <Route>
+      <Route exact path="/contact">
         <ContactUs />
       </Route>
 

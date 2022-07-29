@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react"
-import {Route, Switch, Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 function NavBar({onLogout}) {
   function handleLogout() {
@@ -16,12 +17,22 @@ function NavBar({onLogout}) {
         <button onClick={handleLogout}>Logout</button>
       </header> */}
 
-      <h1 className='text'>| Welcome to Phil's Pillow Reviews |</h1>
-      <Link to={`/login`}>
-        <button class="button-25" role="button">SignIn/Up</button>
+      <Link to="/" exact>
+        <h1 className='text'>| Welcome to Phil's Pillow Reviews |</h1>
       </Link>
-      <button class="button-26" role="button">Contact Us</button>
-      <button class="button-27" role="button">Add Item</button>
+
+      <NavLink to="/contact" exact>
+        <button class="button-26" role="button">Contact Us</button>
+      </NavLink>
+
+      <NavLink to="/items/new" exact>
+        <button class="button-27" role="button">Add Item</button>
+      </NavLink>
+
+      <NavLink to="/login">
+        <button class="button-25" role="button">SignIn/Up</button>
+      </NavLink>
+
       <button class="button-28" role="button">See All Items</button>
     </div>
   );
