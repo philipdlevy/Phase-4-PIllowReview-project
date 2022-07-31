@@ -51,11 +51,11 @@ function App() {
         <ContactUs />
       </Route>
 
-      <Route path="/login">
+      <Route exact path="/login">
         <Login onLogin={handleLogin}/>
       </Route>
 
-      <Route path="/items/:id">
+      <Route exact path="/items">
         <Item />
       </Route>
       <Route path="/items/new">

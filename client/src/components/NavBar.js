@@ -32,7 +32,9 @@ function NavBar({onLogout}) {
         <button className="button-25" >SignIn/Up</button>
       </NavLink>
 
-      <button className="button-28" >See All Items</button>
+      <NavLink to="/items">
+        <button className="button-28" >See All Items</button>
+      </NavLink>
     </div>
   );
 }

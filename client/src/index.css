@@ -197,7 +197,6 @@
     box-shadow: none;
   }
 
-
   .contactinfo {
     position: fixed; bottom: 550px;
     position: fixed; bottom: 400px;
@@ -213,5 +212,24 @@
     text-decoration: underline; 
   }
 
+
+  .formLook {
+    color: aliceblue;
+    border: 2px #485461 solid;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .additemStyling {
+    text-align: center;
+    color: rgb(1, 1, 1);
+    padding-top: 100px;
+  }
+
+  .inputcolor {
+    color: rgb(1, 3, 5);
+    filter: brightness(200%);
+    background-color: transparent;
+  }
 
   
