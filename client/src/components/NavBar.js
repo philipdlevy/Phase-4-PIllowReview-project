@@ -12,28 +12,27 @@ function NavBar({onLogout}) {
 
   return (
     <div className='container'>
-
       {/* <header>
         <button onClick={handleLogout}>Logout</button>
       </header> */}
 
-      <Link to="/" exact>
+      <Link to="/">
         <h1 className='text'>| Welcome to Phil's Pillow Reviews |</h1>
       </Link>
 
-      <NavLink to="/contact" exact>
-        <button class="button-26" >Contact Us</button>
+      <NavLink to="/contact">
+        <button className="button-26" >Contact Us</button>
       </NavLink>
 
-      <NavLink to="/items/new" exact>
-        <button class="button-27" >Add Item</button>
+      <NavLink to="/items/new">
+        <button className="button-27" >Add Item</button>
       </NavLink>
 
       <NavLink to="/login">
-        <button class="button-25" >SignIn/Up</button>
+        <button className="button-25" >SignIn/Up</button>
       </NavLink>
 
-      <button class="button-28" >See All Items</button>
+      <button className="button-28" >See All Items</button>
     </div>
   );
 }

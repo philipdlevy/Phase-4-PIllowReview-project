@@ -16,13 +16,13 @@ import Login from "./Login"
 function App() {
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    fetch("/me").then((response) => {
-      if (response.ok) {
-        response.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   fetch("/me").then((response) => {
+  //     if (response.ok) {
+  //       response.json().then((user) => setUser(user));
+  //     }
+  //   });
+  // }, []);
 
   function handleLogin(user) {
     setUser(user);
@@ -43,14 +43,22 @@ function App() {
       <NavBar user={user} onLogout={handleLogout} />
       <Switch>
 
-
       <Route exact path="/">
         <HomePage />
       </Route>
-      <Route exact path="/items/:id">
+
+      <Route exact path="/contact">
+        <ContactUs />
+      </Route>
+
+      <Route path="/login">
+        <Login onLogin={handleLogin}/>
+      </Route>
+
+      <Route path="/items/:id">
         <Item />
       </Route>
-      <Route exact path="/items/new">
+      <Route path="/items/new">
         <AddItem />
       </Route>
       <Route>
@@ -69,14 +77,8 @@ function App() {
         <EditItem />
       </Route>
 
-      <Route exact path="/login">
-        <Login onLogin={handleLogin}/>
-      </Route>
       
 
-      <Route exact path="/contact">
-        <ContactUs />
-      </Route>
 
       <Route>
         <h1>
