@@ -198,4 +198,20 @@
   }
 
 
+  .contactinfo {
+    position: fixed; bottom: 550px;
+    position: fixed; bottom: 400px;
+    color: #020302;
+    filter: brightness(200%);
+    padding: 20px;
+    flex: 2000px;
+    font-size: 17px;
+    font-family: -apple-system,".SFNSDisplay-Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+
+  .underline {
+    text-decoration: underline; 
+  }
+
+
   
