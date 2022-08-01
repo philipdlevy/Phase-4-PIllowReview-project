@@ -42,7 +42,9 @@ function Login({onLogin, login}) {
                 onChange={(e) => setPassword(e.target.value)}
             />
             <br></br>
-            <button type="submit">Login</button>
+            <Link to="/">
+                <button type="submit">Login</button>
+            </Link>
             <br></br>
             <h2 className='noAccountStyling'>No account?</h2>
             <Link to="/signup">

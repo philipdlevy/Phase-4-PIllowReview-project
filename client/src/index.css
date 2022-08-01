@@ -268,4 +268,58 @@
     width: 18%;
     position: fixed; right: 791px;
   }
+
+
+
+/* text bubble for what to do */
+/* goes in homepage */
+
+  /* .bubble {
+    width: 40%;
+    height: 25%;
+    left: 73%;
+    top: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 5vmin;
+    background: #ffd;
+    box-shadow: 0 -0.25vmin, 0 0.125vmin;
+    font-family: "Comic Sans", "Comic Neue", sans-serif;
+  }
   
+  .bubble::before {
+    width: 40%;
+    height: 100%;
+    bottom: -51%;
+    border-radius: 50%;
+    left: 10%;
+    box-shadow: 0.5vmin 0, 2vmin -0.5vmin #ffd, 2vmin -0.5vmin 0 0.5vmin;
+    clip-path: polygon(0% 49%, 150% 48%, 150% 100%, 0% 100%);
+  } */
+  
+  /* text bubble for what to do */
+
+
+  div.polaroid {
+    width: 20%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px; 
+    float: left;
+    margin-left: 70px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+  }
+  
+  div.polaroid-info {
+    width: 20%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* margin-bottom: 25px; */
+    /* float: left; */
+    margin-left: 10px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+  }
