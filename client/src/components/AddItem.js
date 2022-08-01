@@ -5,7 +5,7 @@ function AddItem() {
     <div>
       <h1 className='additemStyling'>Add a new item</h1>
 
-      <form style={{display:"flex", flexDirection:"column", width:"400px", margin:"auto"}}>
+      <form style={{display:"flex", flexDirection:"column", width:"500px", margin:"auto"}}>
         <label><strong>Item name</strong></label>
         <input 
         className='formLook, inputcolor'

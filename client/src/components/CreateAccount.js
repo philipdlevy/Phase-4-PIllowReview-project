@@ -1,27 +1,33 @@
-
-import React, {useState} from "react"
+import React, {useState} from 'react'
 import {Link} from 'react-router-dom' 
 
-function Login({onLogin, login}) {
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
+function CreateAccount({setUser}) {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch("/login", {
+        fetch("/signup", {
             method: "POST", 
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json", 
             }, 
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({
+                username, 
+                password
+            }),
+        }).then((resp) => {
+            if (resp.ok) {
+                resp.json().then((user) => setUser(user));
+            }
         })
-        .then((resp) => resp.json())
-        .then((user) => onLogin(user))
     }
 
   return (
     <div>
-        <h1 className='signInStyling'>Sign In</h1>
+        <h1 className='signInStyling'>Sign Up</h1>
         <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column", width:"350px", margin:"auto"}}>
             <strong>Username</strong>
 
@@ -42,11 +48,8 @@ function Login({onLogin, login}) {
                 onChange={(e) => setPassword(e.target.value)}
             />
             <br></br>
-            <button type="submit">Login</button>
-            <br></br>
-            <h2 className='noAccountStyling'>No account?</h2>
-            <Link to="/signup">
-                <button className="createAccountButton">Create Account!</button>
+            <Link to="login">
+                <button type="submit">Create Account</button>
             </Link>
         </form>
 
@@ -54,4 +57,4 @@ function Login({onLogin, login}) {
   )
 }
 
-export default Login
+export default CreateAccount

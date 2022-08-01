@@ -212,7 +212,6 @@
     text-decoration: underline; 
   }
 
-
   .formLook {
     color: aliceblue;
     border: 2px #485461 solid;
@@ -232,4 +231,41 @@
     background-color: transparent;
   }
 
+  .signInStyling {
+    text-align: center;
+    color: rgb(1, 1, 1);
+    padding-top: 100px;
+    text-decoration: underline;
+  }
+
+  .noAccountStyling {
+    text-align: center;
+    color: rgb(1, 1, 1);
+    padding-top: 1px;
+    text-decoration: underline;
+  }
+
+  .createAccountButton {
+    background-color: #8fbc8f;
+    background-image: linear-gradient(#8fbc8f, #8fbc8f);
+    border: 1px solid #8fbc8f;
+    border-radius: 1px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-family: -apple-system,".SFNSDisplay-Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 17px;
+    /* line-height: 380%; */
+    margin: 0;
+    outline: 0;
+    padding: 5px ;
+    text-align: center;
+    transition: box-shadow .05s ease-in-out,opacity .05s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 18%;
+    position: fixed; right: 791px;
+  }
   

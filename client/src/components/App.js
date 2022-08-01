@@ -12,17 +12,20 @@ import ItemLister from "./ItemLister"
 import ContactUs from "./ContactUs"
 import EditItem from "./EditItem"
 import Login from "./Login"
+import CreateAccount from "./CreateAccount"
 
 function App() {
   const [user, setUser] = useState(null);
+  console.log(user)
 
-  // useEffect(() => {
-  //   fetch("/me").then((response) => {
-  //     if (response.ok) {
-  //       response.json().then((user) => setUser(user));
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setUser(user));
+        console.log(user)
+      }
+    });
+  }, []);
 
   function handleLogin(user) {
     setUser(user);
@@ -38,9 +41,14 @@ function App() {
   //   return <Login onLogin={setUser} />;
   // }
 
+  // if (user) {
+  //   return <h2>Welcome, {user.username}</h2>
+  // }
+  if (!user) return <Login onLogin={setUser} />;
+
   return (
     <div className="backgroundPicture">
-      <NavBar user={user} onLogout={handleLogout} />
+      <NavBar user={user} setUser={setUser} onLogout={handleLogout} />
       <Switch>
 
       <Route exact path="/">
@@ -52,7 +60,11 @@ function App() {
       </Route>
 
       <Route exact path="/login">
-        <Login onLogin={handleLogin}/>
+        <Login onLogin={handleLogin} login={setUser}/>
+      </Route>
+
+      <Route exact path="/signup">
+        <CreateAccount user={user} setUser={setUser}/>
       </Route>
 
       <Route exact path="/items">
@@ -76,9 +88,6 @@ function App() {
       <Route>
         <EditItem />
       </Route>
-
-      
-
 
       <Route>
         <h1>
