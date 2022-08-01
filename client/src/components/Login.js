@@ -24,16 +24,13 @@ function Login({onLogin, login}) {
         <h1 className='signInStyling'>Sign In</h1>
         <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column", width:"350px", margin:"auto"}}>
             <strong>Username</strong>
-
             <input 
                 type="text"
                 id="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
             />
-
             <br></br>
-
             <strong>Password</strong>
             <input 
                 type="password"
@@ -51,7 +48,6 @@ function Login({onLogin, login}) {
                 <button className="createAccountButton">Create Account!</button>
             </Link>
         </form>
-
     </div>
   )
 }

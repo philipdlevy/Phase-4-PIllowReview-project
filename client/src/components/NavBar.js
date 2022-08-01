@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 
 
-function NavBar({user, onLogout}) {
+function NavBar({user, setUser, onLogout}) {
 
   function handleLogout() {
     fetch("/logout", {
@@ -11,21 +11,9 @@ function NavBar({user, onLogout}) {
     }).then(() => onLogout())
   }
 
-  // function handleLogoutClick() {
-  //   fetch("/logout", { method: "DELETE" }).then((r) => {
-  //     if (r.ok) {
-  //       setUser(null);
-  //     }
-  //   });
-  // }
-
-
   return (
     <div className='container'>
-      {/* <header>
-        <button onClick={handleLogout}>Logout</button>
-      </header> */}
-
+      
       <Link to="/">
         <h1 className='text'>| Welcome to Phil's Pillow Reviews |</h1>
       </Link>

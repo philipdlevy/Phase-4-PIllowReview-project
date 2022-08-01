@@ -31,9 +31,9 @@ function App() {
   },[])
 
   useEffect(() => {
-    fetch("/me").then((response) => {
-      if (response.ok) {
-        response.json().then((user) => setUser(user));
+    fetch("/me").then((resp) => {
+      if (resp.ok) {
+        resp.json().then((user) => setUser(user));
         console.log(user)
       }
     });
@@ -46,35 +46,6 @@ function App() {
   function handleLogout() {
     setUser(null)
   }
-
-
-  // const welcomeMessage = {
-  //   if (user) {
-  //     return <h2>Welcome, {user.username}!</h2>;
-  //   }
-  // }
-
-
-  // if (user) {
-  //   return <h2>Welcome, {user.username}!</h2>;
-  // } else {
-  //   return <Login onLogin={setUser} />;
-  // }
-
-  // if (user) {
-  //   return <h2>Welcome, {user.username}</h2>
-  // }
-  // if (!user) return <Login onLogin={setUser} />;
-
-  // const itemLister = items.map((item) => {
-  //   return <ItemLister key={item.id} name={item.name} description={item.description} image_url={item.image_url} price={item.price}/>
-  // })
-
-  // if (user) {
-  //   return <Logout />
-  // }
-
-  
 
   const itemObj = items.map((item) => {
     return item
