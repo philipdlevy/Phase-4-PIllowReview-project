@@ -327,7 +327,7 @@
   }
 
   .signOutButton {
-    position: fixed; right: 15px; bottom: 700px;
+    position: fixed; right: 15px; bottom: 690px;
     background-color: #8fbc8f;
     background-image: linear-gradient(#8fbc8f, #8fbc8f);
     border: 1px solid #8fbc8f;
@@ -338,7 +338,7 @@
     display: block;
     font-family: -apple-system,".SFNSDisplay-Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 17px;
-    margin: 0;
+    margin: 10;
     outline: 0;
     padding: 5px ;
     text-align: center;
@@ -347,4 +347,21 @@
     -webkit-user-select: none;
     touch-action: manipulation;
     width: 8.5%;
+  }
+
+  .signOutButton:active {
+    box-shadow: rgba(0, 0, 0, 0.15) 0 2px 4px inset, rgba(0, 0, 0, 0.4) 0 1px 1px;
+  }
+  
+  .signOutButton:disabled {
+    cursor: not-allowed;
+    opacity: .6;
+  }
+  
+  .signOutButton:disabled:active {
+    pointer-events: none;
+  }
+  
+  .signOutButton:disabled:hover {
+    box-shadow: none;
   }

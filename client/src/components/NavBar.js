@@ -11,6 +11,14 @@ function NavBar({user, onLogout}) {
     }).then(() => onLogout())
   }
 
+  // function handleLogoutClick() {
+  //   fetch("/logout", { method: "DELETE" }).then((r) => {
+  //     if (r.ok) {
+  //       setUser(null);
+  //     }
+  //   });
+  // }
+
 
   return (
     <div className='container'>
@@ -21,13 +29,6 @@ function NavBar({user, onLogout}) {
       <Link to="/">
         <h1 className='text'>| Welcome to Phil's Pillow Reviews |</h1>
       </Link>
-
-      {/* {user ? (
-        <div>
-        <p>Welcome, {user.username}!</p>
-        <div/>
-      )} */}
-
 
       <NavLink to="/contact">
         <button className="button-26" >Contact Us</button>
@@ -49,7 +50,7 @@ function NavBar({user, onLogout}) {
         {user ? <h2>Welcome,  {user.username}!</h2> : null }
       </div>
       <div>
-        {user ? <button className="signOutButton">SignOut</button> : null }
+        {user ? <button className="signOutButton" onClick={handleLogout}>SignOut</button> : null }
       </div>
     </div>
   );
