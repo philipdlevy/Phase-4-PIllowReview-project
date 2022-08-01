@@ -7,7 +7,6 @@ function AddItem({items, setItems}) {
   const [descriptionData, setDescriptionData] = useState("")
   const [image_urlData, setImage_urlData] = useState("")
 
-
   const history = useHistory();
 
   function handleSubmit(e) {
@@ -57,7 +56,7 @@ function AddItem({items, setItems}) {
         name="price"
         onChange={(e) => setPriceData(e.target.value)}
         /><br/>
-        <label><strong>Description</strong></label>
+        <label><strong>Description: (Minimum 25 Characters)</strong></label>
         <input 
         className='formLook, inputcolor'
         value={descriptionData}

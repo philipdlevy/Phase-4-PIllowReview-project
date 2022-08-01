@@ -6,7 +6,6 @@ function CreateAccount({setUser}) {
     const [password, setPassword] = useState("");
 
 
-
     function handleSubmit(e) {
         e.preventDefault();
         fetch("/signup", {
@@ -30,16 +29,13 @@ function CreateAccount({setUser}) {
         <h1 className='signInStyling'>Sign Up</h1>
         <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column", width:"350px", margin:"auto"}}>
             <strong>Username</strong>
-
             <input 
                 type="text"
                 id="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
             />
-
             <br></br>
-
             <strong>Password</strong>
             <input 
                 type="password"
@@ -50,6 +46,10 @@ function CreateAccount({setUser}) {
             <br></br>
             <Link to="login">
                 <button type="submit">Create Account</button>
+            </Link>
+            <br></br>
+            <Link to="/login">
+            <button>Back</button>
             </Link>
         </form>
 
