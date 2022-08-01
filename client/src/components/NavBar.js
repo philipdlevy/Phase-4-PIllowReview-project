@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react"
 import {NavLink} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 
+
 function NavBar({user, onLogout}) {
 
   function handleLogout() {
@@ -38,7 +39,7 @@ function NavBar({user, onLogout}) {
 
       <NavLink to="/login">
         <button className="button-25" >SignIn/Up</button>
-      </NavLink>
+      </NavLink> 
 
       <NavLink to="/items">
         <button className="button-28" >See All Items</button>
@@ -46,6 +47,9 @@ function NavBar({user, onLogout}) {
 
       <div className="welcomeMessage">
         {user ? <h2>Welcome,  {user.username}!</h2> : null }
+      </div>
+      <div>
+        {user ? <button className="signOutButton">SignOut</button> : null }
       </div>
     </div>
   );

@@ -320,8 +320,31 @@
     bottom: -24px;
   } */
 
-
   .welcomeMessage {
-    position: relative;
+    position: fixed; right: 15px; bottom: 715px;
     text-align: center;
+    text-decoration: underline;
+  }
+
+  .signOutButton {
+    position: fixed; right: 15px; bottom: 700px;
+    background-color: #8fbc8f;
+    background-image: linear-gradient(#8fbc8f, #8fbc8f);
+    border: 1px solid #8fbc8f;
+    border-radius: 1px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-family: -apple-system,".SFNSDisplay-Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 17px;
+    margin: 0;
+    outline: 0;
+    padding: 5px ;
+    text-align: center;
+    transition: box-shadow .05s ease-in-out,opacity .05s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 8.5%;
   }
