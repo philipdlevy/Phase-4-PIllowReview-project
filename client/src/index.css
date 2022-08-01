@@ -319,3 +319,9 @@
     left: 32px;
     bottom: -24px;
   } */
+
+
+  .welcomeMessage {
+    position: relative;
+    text-align: center;
+  }

@@ -8,7 +8,8 @@ function HomePage() {
   // }
   //   </div> 
 
-  <div></div>
+  <div>
+  </div>
   // <div className="bubble bubble-bottom-left" contenteditable>
   //   If you want to leave a review, please sign in or create an account
   // </div>

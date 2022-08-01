@@ -13,6 +13,7 @@ import ContactUs from "./ContactUs"
 import EditItem from "./EditItem"
 import Login from "./Login"
 import CreateAccount from "./CreateAccount"
+import Logout from "./Logout"
 
 function App() {
   const [user, setUser] = useState(null);
@@ -46,6 +47,14 @@ function App() {
     setUser(null)
   }
 
+
+  // const welcomeMessage = {
+  //   if (user) {
+  //     return <h2>Welcome, {user.username}!</h2>;
+  //   }
+  // }
+
+
   // if (user) {
   //   return <h2>Welcome, {user.username}!</h2>;
   // } else {
@@ -61,13 +70,19 @@ function App() {
   //   return <ItemLister key={item.id} name={item.name} description={item.description} image_url={item.image_url} price={item.price}/>
   // })
 
+  // if (user) {
+  //   return <Logout />
+  // }
+
+  
+
   const itemObj = items.map((item) => {
     return item
   })
 
   return (
     <div className="backgroundPicture">
-      <NavBar user={user} setUser={setUser} onLogout={handleLogout} />
+      <NavBar user={user} setUser={setUser} onLogout={handleLogout}/>
       <Switch>
 
       <Route exact path="/">

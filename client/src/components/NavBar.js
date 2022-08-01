@@ -2,7 +2,8 @@ import React, {useState, useEffect} from "react"
 import {NavLink} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 
-function NavBar({onLogout}) {
+function NavBar({user, onLogout}) {
+
   function handleLogout() {
     fetch("/logout", {
       method: "DELETE",
@@ -20,6 +21,13 @@ function NavBar({onLogout}) {
         <h1 className='text'>| Welcome to Phil's Pillow Reviews |</h1>
       </Link>
 
+      {/* {user ? (
+        <div>
+        <p>Welcome, {user.username}!</p>
+        <div/>
+      )} */}
+
+
       <NavLink to="/contact">
         <button className="button-26" >Contact Us</button>
       </NavLink>
@@ -35,6 +43,10 @@ function NavBar({onLogout}) {
       <NavLink to="/items">
         <button className="button-28" >See All Items</button>
       </NavLink>
+
+      <div className="welcomeMessage">
+        {user ? <h2>Welcome,  {user.username}!</h2> : null }
+      </div>
     </div>
   );
 }
