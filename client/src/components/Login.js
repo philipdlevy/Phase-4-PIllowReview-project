@@ -1,12 +1,17 @@
 
 import React, {useState} from "react"
 import {Link} from 'react-router-dom' 
+import {useHistory} from "react-router-dom"
+
 
 function Login({onLogin, login}) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
+    const history = useHistory();
+
     function handleSubmit(e) {
+        console.log("user")
         e.preventDefault();
         fetch("/login", {
             method: "POST", 
@@ -17,12 +22,13 @@ function Login({onLogin, login}) {
         })
         .then((resp) => resp.json())
         .then((user) => onLogin(user))
+        history.push("/")
     }
-
+    
   return (
     <div>
         <h1 className='signInStyling'>Sign In</h1>
-        <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column", width:"350px", margin:"auto"}}>
+        <form style={{display:"flex", flexDirection:"column", width:"350px", margin:"auto"}}>
             <strong>Username</strong>
             <input 
                 type="text"
@@ -39,9 +45,7 @@ function Login({onLogin, login}) {
                 onChange={(e) => setPassword(e.target.value)}
             />
             <br></br>
-            <Link to="/">
-                <button type="submit">Login</button>
-            </Link>
+            <button onClick={handleSubmit} type="submit">Login</button>
             <br></br>
             <h2 className='noAccountStyling'>No account?</h2>
             <Link to="/signup">

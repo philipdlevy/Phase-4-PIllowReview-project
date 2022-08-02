@@ -13,13 +13,12 @@ import ContactUs from "./ContactUs"
 import EditItem from "./EditItem"
 import Login from "./Login"
 import CreateAccount from "./CreateAccount"
-import Logout from "./Logout"
 
 function App() {
   const [user, setUser] = useState(null);
-  console.log(user)
+  // console.log(user)
   const [items, setItems] = useState([])
-  console.log(items)
+  // console.log(items)
 
   useEffect(() => {
     fetch("/items")
@@ -56,9 +55,6 @@ function App() {
       <NavBar user={user} setUser={setUser} onLogout={handleLogout}/>
       <Switch>
 
-      <Route exact path="/">
-        <HomePage />
-      </Route>
 
       <Route exact path="/contact">
         <ContactUs />
@@ -94,6 +90,9 @@ function App() {
         <EditItem />
       </Route>
       
+      <Route exact path="/">
+        <HomePage />
+      </Route>
 
       <Route>
         <h1>
