@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :reviews, only: [:show, :index, :create, :destroy]
-  resources :items, only: [:show, :index, :create, :destroy]
-  # resources :users, only: [:show, :create]
+  resources :reviews, only: [:show, :index, :create, :destroy, :update]
+  resources :items, only: [:show, :index, :create, :destroy, :update]
+  resources :users, only: [:show, :create]
 
   ### Custom routes
 

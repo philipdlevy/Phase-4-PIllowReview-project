@@ -271,18 +271,18 @@
 
 
 
-  div.polaroid {
-    width: 20%;
-    background-color: white;
+  .polaroid {
+    width: 15%;
+    background-color: #9cc39c;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 25px; 
     float: left;
     margin-left: 70px;
-    margin-top: 50px;
+    margin-top: 150px;
     flex-wrap: wrap;
   }
   
-  div.polaroid-info {
+  .polaroid-info {
     width: 20%;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -321,13 +321,13 @@
   } */
 
   .welcomeMessage {
-    position: fixed; right: 15px; bottom: 715px;
+    position: fixed; right: 15px; bottom: 730px;
     text-align: center;
     text-decoration: underline;
   }
 
   .signOutButton {
-    position: fixed; right: 15px; bottom: 690px;
+    position: fixed; right: 15px; bottom: 710px;
     background-color: #8fbc8f;
     background-image: linear-gradient(#8fbc8f, #8fbc8f);
     border: 1px solid #8fbc8f;
@@ -365,3 +365,9 @@
   .signOutButton:disabled:hover {
     box-shadow: none;
   }
+
+  .imgSize {
+    width: 100%;
+    height: 15vw;
+    object-fit:fill;
+}

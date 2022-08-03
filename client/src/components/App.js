@@ -4,7 +4,6 @@ import {Route, Switch} from 'react-router-dom'
 import NavBar from "./NavBar"
 import HomePage from "./HomePage"
 import AddItem from "./AddItem"
-// import Item from "./Item"
 import ItemDetail from "./ItemDetail"
 import AddReview from "./AddReview"
 import EditReview from "./EditReview"
@@ -16,9 +15,7 @@ import CreateAccount from "./CreateAccount"
 
 function App() {
   const [user, setUser] = useState(null);
-  // console.log(user)
   const [items, setItems] = useState([])
-  // console.log(items)
 
   useEffect(() => {
     fetch("/items")
@@ -38,6 +35,7 @@ function App() {
     });
   }, []);
 
+  
   function handleLogin(user) {
     setUser(user);
   }
@@ -55,7 +53,6 @@ function App() {
       <NavBar user={user} setUser={setUser} onLogout={handleLogout}/>
       <Switch>
 
-
       <Route exact path="/contact">
         <ContactUs />
       </Route>
@@ -68,17 +65,14 @@ function App() {
         <CreateAccount user={user} setUser={setUser}/>
       </Route>
 
-      {/* <Route exact path="/items">
-        <Item />
-      </Route> */}
       <Route exact path="/items">
-        <ItemLister allItems={items} itemObj={itemObj}/>
+        <ItemLister itemObj={itemObj} items={items}/>
       </Route>
       <Route path="/items/new">
         <AddItem items={items} setItems={setItems}/>
       </Route>
-      <Route>
-        <ItemDetail />
+      <Route path="/items/:id">
+        <ItemDetail items={items} itemObj={itemObj}/>
       </Route>
       <Route>
         <AddReview />
