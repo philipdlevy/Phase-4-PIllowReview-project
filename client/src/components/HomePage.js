@@ -1,12 +1,7 @@
 import React from 'react'
 
 function HomePage() {
-  return (
-  //   <div>
-  //      if (user) {
-  //   return <h2>Welcome, {user.username}</h2>
-  // }
-  //   </div> 
+  return ( 
 
   <div>
   </div>
@@ -18,3 +13,7 @@ function HomePage() {
 }
 
 export default HomePage
+
+
+
+

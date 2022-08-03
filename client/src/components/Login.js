@@ -10,9 +10,14 @@ function Login({onLogin, login}) {
 
     const history = useHistory();
 
+    
+    // old one. this works
     function handleSubmit(e) {
-        console.log("user")
         e.preventDefault();
+        if (username.length == 0 || password.length == 0) {
+            // return alert("Username and Password can't be blank")
+            document.getElementById("error-alert").hidden = false
+        } else {
         fetch("/login", {
             method: "POST", 
             headers: {
@@ -21,9 +26,41 @@ function Login({onLogin, login}) {
             body: JSON.stringify({ username, password }),
         })
         .then((resp) => resp.json())
-        .then((user) => onLogin(user))
-        history.push("/")
+        .then((user) => {
+            if (user.error) {
+                // alert(user.error.login)
+                document.getElementById("error-alert2").hidden = false
+            } else {
+                onLogin(user)
+                history.push("/")
+            }
+        })
+        .catch((error) => alert(error))
+        }
     }
+
+    // function handleErrors() {
+    //     if
+    // }
+
+
+
+    // function handleSubmit(e) {
+    //     e.preventDefault();
+    //     fetch("/login", {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify({ username, password }),
+    //     }).then((resp) => {
+    //       if (resp.ok) {
+    //         resp.json().then((user) => onLogin(user));
+    //       } else {
+    //         resp.json().then((err) => setErrors(err.errors));
+    //       }
+    //     });
+    // }
     
   return (
     <div>
@@ -52,6 +89,21 @@ function Login({onLogin, login}) {
                 <button className="createAccountButton">Create Account!</button>
             </Link>
         </form>
+
+        <div id="error-alert" hidden>
+          <div class="alert-heading">
+          </div>
+          <div class="inner-msg">
+                <p>Username and or Password can't be blank</p>
+          </div>
+        </div>
+        <div id="error-alert2" hidden>
+          <div class="alert-heading">
+          </div>
+          <div class="inner-msg">
+                <p>Invalid Username or Password</p>
+          </div>
+        </div>
     </div>
   )
 }
