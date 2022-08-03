@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
     end
 
     def update 
-        item= Item.find(params[:id])
+        item = Item.find(params[:id])
         item.update!(item_params)
         render json: item
     rescue ActiveRecord::RecordInvalid => invalid

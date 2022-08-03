@@ -42,36 +42,6 @@ function ItemDetail({items, itemObj}) {
     }
   }, [items])
 
-  // useEffect(() => {
-  //   fetch(`/items/${itemObj.id}`).then((resp) => {
-  //     if (resp.ok) {
-  //       resp.json().then((item) => {
-  //         setPickedItem(item)
-  //       })
-  //     } else {
-  //       setPickedItem({
-  //         name: "", 
-  //         price: 0, 
-  //         description: "", 
-  //         image_url: ""
-  //       })
-  //     }
-  //   })
-  // }, [items])
-
-  // useEffect(() => {
-  //   fetch(`/items/${id}`)
-  //     .then((r) => console.log(r))
-      
-  // }, []);
-
-    // useEffect(() => {
-    // fetch(`/items/${itemObj.id}`)
-    //   .then
-    // }, [])
-
-
-
   const {name, description, price, image_url} = pickedItem
 
   return (
@@ -88,17 +58,3 @@ function ItemDetail({items, itemObj}) {
 }
 
 export default ItemDetail
-
-// useEffect(() => {
-//   fetch(`/items/${id}`).then((resp) => {
-//     if (resp.ok) {
-//       resp.json().then((item) =>
-//         setPickedItem(pickedItem)
-//       );
-//     } else {
-//       resp.json().then((err) =>
-//         setPickedItem(null)
-//       );
-//     }
-//   });
-// }, [id]);

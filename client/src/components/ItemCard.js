@@ -10,7 +10,7 @@ function ItemCard({itemObj}) {
       <img className='imgSize' src={image_url}></img>
       <h3 className='underline'>{name}</h3>
       <p>Price: {price}</p>
-      <Link to="/items/:id">
+      <Link to={`/items/${id}`}>
         <button>See more details</button>
       </Link>
     </div>
