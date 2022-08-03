@@ -295,6 +295,24 @@
     flex-wrap: wrap;
   }
 
+  .polaroidDetail {
+    width: 20%;
+    background-color: #9cc39c;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px; 
+    float: left;
+    margin-left: 70px;
+    margin-top: 150px;
+  }
+  
+  .polaroidDetail-info {
+    width: 20%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-left: 10px;
+    margin-top: 50px;
+  }
+
 
   /* .bubble {
     position: relative;
@@ -393,6 +411,7 @@
   position:relative; top:10px;
   } */
 
+  /* Blank username or password */
   div#error-alert {
     position: absolute;
     font-family: sans-serif;
@@ -407,7 +426,6 @@
     right: 540px;
     top: 100px;
   }
-  
   div#error-alert .alert-heading {
     content: "";
     width: 0px;
@@ -420,7 +438,9 @@
     left: 32px;
     bottom: -24px;
   }
+  /* Blank username or password */
 
+  /* incorrect username or password */
   div#error-alert2 {
     position: absolute;
     font-family: sans-serif;
@@ -435,7 +455,6 @@
     right: 540px;
     top: 100px;
   }
-  
   div#error-alert2 .alert-heading {
     content: "";
     width: 0px;
@@ -447,4 +466,26 @@
     border-bottom: 20px solid transparent;
     left: 32px;
     bottom: -24px;
+  }
+  /* incorrect username or password */
+
+
+
+  .reviewPlacement {
+    position: absolute;
+    left: 5px;
+    text-decoration: underline; 
+    bottom: -5px;
+    text-align: center;
+    /* left: 200px;
+    text-decoration: underline; 
+    top: 110px; */
+  }
+
+  .hr {
+    position:sticky;
+    height: 1px;
+    border: 10;
+    border-top: 8px solid #ccc;
+    top: 700px
   }
