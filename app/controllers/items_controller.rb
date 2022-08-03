@@ -1,3 +1,5 @@
+require "pry"
+
 class ItemsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
@@ -7,14 +9,34 @@ class ItemsController < ApplicationController
     end
 
     def show
-        # item = Item.find(params[:id])
-        item = Item.find_by(id: params[:id])
-        if item
-            render json: item
+        # item = Item.find_by(id: params[:id])
+        # if item
+        #     render json: item
+        # else
+        #     render json: {error: "Item Not Found"}, status: :not_found
+        # end
+
+
+        # if params[:item_id]
+        #     item = Item.find(params[:item_id])
+        #     reviews = item.reviews
+        # else
+        #     reviews = Review.all
+        # end
+        # render json: reviews
+
+        if params[:item_id]
+            item = Item.find(params[:item_id])
+            reviews = item.reviews
         else
-            render json: {error: "Item Not Found"}, status: :not_found
+            reviews = Review.all
         end
+        render json: reviews
     end
+
+
+    
+
 
     def create
         item = Item.create!(item_params)

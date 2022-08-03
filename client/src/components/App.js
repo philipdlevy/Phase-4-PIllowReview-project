@@ -9,13 +9,14 @@ import AddReview from "./AddReview"
 import EditReview from "./EditReview"
 import ItemLister from "./ItemLister"
 import ContactUs from "./ContactUs"
-import EditItem from "./EditItem"
 import Login from "./Login"
 import CreateAccount from "./CreateAccount"
 
 function App() {
   const [user, setUser] = useState(null);
   const [items, setItems] = useState([])
+
+  const [toggleItem, setToggleItem] = useState(false)
 
   useEffect(() => {
     fetch("/items")
@@ -24,7 +25,7 @@ function App() {
       setItems(items)
     })
     .catch((error) => alert(error))
-  },[])
+  },[toggleItem])
 
   useEffect(() => {
     fetch("/me").then((resp) => {
@@ -42,6 +43,12 @@ function App() {
 
   function handleLogout() {
     setUser(null)
+  }
+
+
+  function onDeleteItem(id) {
+    const updatedItemArray = items.filter(item => item.id != parseInt(id))
+    setItems(updatedItemArray)
   }
 
   const itemObj = items.map((item) => {
@@ -72,16 +79,13 @@ function App() {
         <AddItem items={items} setItems={setItems}/>
       </Route>
       <Route path="/items/:id">
-        <ItemDetail items={items} itemObj={itemObj}/>
+        <ItemDetail items={items} setItems={setItems} toggleItem={toggleItem} setToggleItem={setToggleItem} onDeleteItem={onDeleteItem}/>
       </Route>
       <Route>
         <AddReview />
       </Route>
       <Route>
         <EditReview />
-      </Route>
-      <Route>
-        <EditItem />
       </Route>
       
       <Route exact path="/">

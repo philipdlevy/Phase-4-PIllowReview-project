@@ -1,7 +1,14 @@
 class ReviewsController < ApplicationController
 
     def index
-        reviews = Review.all
+        # reviews = Review.all
+        # render json: reviews
+        if params[:item_id]
+            item = Item.find(params[:item_id])
+            reviews = item.reviews
+        else
+            reviews = Review.all
+        end
         render json: reviews
     end
 
