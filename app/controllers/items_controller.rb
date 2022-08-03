@@ -9,7 +9,6 @@ class ItemsController < ApplicationController
     def show
         # item = Item.find(params[:id])
         item = Item.find_by(id: params[:id])
-        # render json: item
         if item
             render json: item
         else
