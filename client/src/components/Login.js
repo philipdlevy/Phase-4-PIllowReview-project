@@ -38,29 +38,6 @@ function Login({onLogin, login}) {
         .catch((error) => alert(error))
         }
     }
-
-    // function handleErrors() {
-    //     if
-    // }
-
-
-
-    // function handleSubmit(e) {
-    //     e.preventDefault();
-    //     fetch("/login", {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify({ username, password }),
-    //     }).then((resp) => {
-    //       if (resp.ok) {
-    //         resp.json().then((user) => onLogin(user));
-    //       } else {
-    //         resp.json().then((err) => setErrors(err.errors));
-    //       }
-    //     });
-    // }
     
   return (
     <div>

@@ -17,7 +17,6 @@ function App() {
   const [items, setItems] = useState([])
   const [reviews, setReviews] = useState([])
 
-
   useEffect(() => {
     fetch("/items")
     .then((resp) => resp.json())
@@ -36,14 +35,14 @@ function App() {
     });
   }, []);
 
-  useEffect(() => {
-    fetch("/reviews")
-    .then((resp) => resp.json())
-    .then((reviews) => {
-      setReviews(reviews)
-    })
-    .catch((error) => alert(error))
-  },[]);
+  // useEffect(() => {
+  //   fetch("/reviews")
+  //   .then((resp) => resp.json())
+  //   .then((reviews) => {
+  //     setReviews(reviews)
+  //   })
+  //   .catch((error) => alert(error))
+  // },[]);
 
   
   function handleLogin(user) {
@@ -54,10 +53,9 @@ function App() {
     setUser(null)
   }
 
-
   function onDeleteItem(id) {
     const updatedItemArray = items.filter(item => item.id != parseInt(id))
-    setItems(updatedItemArray)
+    setItems( updatedItemArray)
   }
 
 

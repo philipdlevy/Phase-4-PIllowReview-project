@@ -1,14 +1,13 @@
 require 'pry'
 
 class ReviewSerializer < ActiveModel::Serializer
-  attributes :id, :title, :body, :rating, :reviewUsername
+  attributes :id, :title, :body, :rating, :user
 
   belongs_to :user
   belongs_to :item
 
-
-  def reviewUsername
+  def user
     user = User.find(self.object.user_id)
-    user.username
+    user
   end
 end

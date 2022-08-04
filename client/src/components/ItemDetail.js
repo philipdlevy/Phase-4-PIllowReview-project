@@ -4,10 +4,10 @@ import {useHistory, useParams} from "react-router-dom"
 import EditItem from "./EditItem"
 
 
-function ItemDetail({items, setItems, reviews, setReviews, toggleItems, setToggleItems, onDeleteItem}) {
+function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}) {
   const [titleData, setTitleData] = useState("")
   const [bodyData, setBodyData] = useState("")
-  const [ratingData, setRatingData] = useState(0)
+  const [ratingData, setRatingData] = useState("")
 
   const [editing, setEditing] = useState(false)
   const [pickedItem, setPickedItem] = useState({
@@ -18,6 +18,7 @@ function ItemDetail({items, setItems, reviews, setReviews, toggleItems, setToggl
     reviews: []
   })
 
+  const history = useHistory();
 
   //Creating a review
   function handleSubmit(e) {
@@ -29,7 +30,7 @@ function ItemDetail({items, setItems, reviews, setReviews, toggleItems, setToggl
       rating: ratingData
     };
 
-    fetch("/reviews", {
+    fetch(`/items/${id}/reviews`, {
       method: "POST", 
       headers: {
         "Content-Type": "application/json"
@@ -38,12 +39,12 @@ function ItemDetail({items, setItems, reviews, setReviews, toggleItems, setToggl
     })
     .then((resp) => resp.json())
     .then((reviewData) => {
-      setReviews([...reviews, reviewData])
+      // debugger
+      // console.log("reviewData", reviewData) item must exists error
+      // setItems([...reviews, reviewData])
     })
     .catch((error) => alert(error));
   } 
-
-  const history = useHistory();
 
   let {id} = useParams();
 
@@ -51,7 +52,7 @@ function ItemDetail({items, setItems, reviews, setReviews, toggleItems, setToggl
     const item = items.find((foundItem => foundItem.id == id))
     if (item) {
       setPickedItem(item)
-      // console.log(item)
+      
     } else {
       setPickedItem({
         name: "", 
@@ -63,19 +64,20 @@ function ItemDetail({items, setItems, reviews, setReviews, toggleItems, setToggl
     }
   }, [items, toggleItems])
 
-
   const {name, description, price, image_url} = pickedItem
 
   console.log("pickedItem", pickedItem)
     // getting reviews for item and displaying them
     const itemReviews = pickedItem.reviews.map((review) => {
-      return <p><strong>Username: </strong>{review.reviewUsername} 
-        <li>
-          <strong>Title: </strong>{review.title}
-          <p>{review.body}</p>
-          <li>Rating: {review.rating} out of 5</li>
-        </li>
-      </p>
+      return <div> 
+        <p><strong>Username: </strong>{review.user.username} 
+          <li>
+            <strong>Title: </strong>{review.title}
+              <p>{review.body}</p>
+            <li>Rating: {review.rating} out of 5</li>
+          </li>
+        </p>
+      </div>
     })
 
 
@@ -95,8 +97,6 @@ function ItemDetail({items, setItems, reviews, setReviews, toggleItems, setToggl
     function addReviewForm() {
       document.getElementById("addReviewForm").hidden = false
     }
-
-
   if (editing) {
     return <EditItem pickedItem={pickedItem} setEditing={setEditing} toggleItems={toggleItems} setToggleItems={setToggleItems} setPickedItem={setPickedItem} />
   } else {
@@ -123,10 +123,9 @@ function ItemDetail({items, setItems, reviews, setReviews, toggleItems, setToggl
         </div>
 
         <div id="addReviewForm" hidden>
-          <form style={{display:"flex", flexDirection:"column", width:"500px", margin:"auto"}}>
+          <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column", width:"500px", margin:"auto"}}>
             <label><strong>Title</strong></label>
             <input 
-            // className='formLook, inputcolor'
             value={titleData}
             type="text" 
             name="title"
@@ -134,13 +133,19 @@ function ItemDetail({items, setItems, reviews, setReviews, toggleItems, setToggl
             /><br/>
             <label><strong>Body</strong></label>
             <input 
-            // className='formLook, inputcolor'
             value={bodyData}
             type="text" 
             name="body"
             onChange={(e) => setBodyData(e.target.value)}
             /><br/>
-            <button onClick={handleSubmit} type="submit"></button>
+            <label><strong>Rating: 1 out of 5</strong></label>
+            <input 
+            value={ratingData}
+            type="text" 
+            name="rating"
+            onChange={(e) => setRatingData(e.target.value)}
+            /><br/>
+            <input type="submit"></input>
           </form>
         </div>
       </>

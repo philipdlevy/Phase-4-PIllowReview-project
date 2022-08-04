@@ -33,7 +33,6 @@ function EditItem({pickedItem, setEditing, toggleItem, setToggleItem}) {
       setToggleItem(!toggleItem)
       setEditing(false)
     })
-    history.push("/items")
     .catch((error) => alert(error));
   }
 
