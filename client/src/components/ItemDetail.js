@@ -34,14 +34,11 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
   }, [items, toggleItems])
 
 
-
-
   const {name, description, price, image_url} = pickedItem
   console.log("pickedItem", pickedItem)
     const itemReviews = pickedItem.reviews.map((review) => {
       return <li>{review.title}</li>
     })
-
 
     function handleDelete() {
       fetch(`items/${id}`, {

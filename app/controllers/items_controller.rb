@@ -6,15 +6,22 @@ class ItemsController < ApplicationController
     def index
         items = Item.all
         render json: items
+        # if params[:item_id]
+        #     item = Item.find(params[:item_id])
+        #     reviews = item.reviews
+        # else
+        #     items = Review.all
+        # end
+        # render json: reviews
     end
 
     def show
-        # item = Item.find_by(id: params[:id])
-        # if item
-        #     render json: item
-        # else
-        #     render json: {error: "Item Not Found"}, status: :not_found
-        # end
+        item = Item.find_by(id: params[:id])
+        if item
+            render json: item
+        else
+            render json: {error: "Item Not Found"}, status: :not_found
+        end
 
 
         # if params[:item_id]
@@ -25,13 +32,13 @@ class ItemsController < ApplicationController
         # end
         # render json: reviews
 
-        if params[:item_id]
-            item = Item.find(params[:item_id])
-            reviews = item.reviews
-        else
-            reviews = Review.all
-        end
-        render json: reviews
+        # if params[:item_id]
+        #     item = Item.find(params[:item_id])
+        #     reviews = item.reviews
+        # else
+        #     reviews = Review.all
+        # end
+        # render json: reviews
     end
 
 

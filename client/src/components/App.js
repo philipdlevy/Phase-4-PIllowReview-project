@@ -16,7 +16,6 @@ function App() {
   const [user, setUser] = useState(null);
   const [items, setItems] = useState([])
 
-  const [toggleItem, setToggleItem] = useState(false)
 
   useEffect(() => {
     fetch("/items")
@@ -25,7 +24,7 @@ function App() {
       setItems(items)
     })
     .catch((error) => alert(error))
-  },[toggleItem])
+  },[])
 
   useEffect(() => {
     fetch("/me").then((resp) => {
@@ -51,9 +50,6 @@ function App() {
     setItems(updatedItemArray)
   }
 
-  const itemObj = items.map((item) => {
-    return item
-  })
 
   return (
     <div className="backgroundPicture">
@@ -73,13 +69,13 @@ function App() {
       </Route>
 
       <Route exact path="/items">
-        <ItemLister itemObj={itemObj} items={items}/>
+        <ItemLister items={items}/>
       </Route>
       <Route path="/items/new">
         <AddItem items={items} setItems={setItems}/>
       </Route>
       <Route path="/items/:id">
-        <ItemDetail items={items} setItems={setItems} toggleItem={toggleItem} setToggleItem={setToggleItem} onDeleteItem={onDeleteItem}/>
+        <ItemDetail items={items} setItems={setItems} onDeleteItem={onDeleteItem}/>
       </Route>
       <Route>
         <AddReview />

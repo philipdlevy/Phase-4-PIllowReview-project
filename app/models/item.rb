@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
     has_many :reviews, dependent: :destroy
-    has_many :users, through: :reviews
+    
 
     validates :name, presence: true
     validates :price, presence: true, numericality: {greater_than: 0}
