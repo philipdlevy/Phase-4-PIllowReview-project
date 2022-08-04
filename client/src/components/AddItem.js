@@ -34,8 +34,6 @@ function AddItem({items, setItems}) {
     .catch((error) => alert(error));
   } 
 
-  
-
 
   return (
     <div>

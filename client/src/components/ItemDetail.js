@@ -3,7 +3,12 @@ import {useHistory, useParams} from "react-router-dom"
 
 import EditItem from "./EditItem"
 
-function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}) {
+
+function ItemDetail({items, setItems, reviews, setReviews, toggleItems, setToggleItems, onDeleteItem}) {
+  const [titleData, setTitleData] = useState("")
+  const [bodyData, setBodyData] = useState("")
+  const [ratingData, setRatingData] = useState(0)
+
   const [editing, setEditing] = useState(false)
   const [pickedItem, setPickedItem] = useState({
     name: "", 
@@ -12,6 +17,31 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
     image_url: "", 
     reviews: []
   })
+
+
+  //Creating a review
+  function handleSubmit(e) {
+    e.preventDefault(); 
+
+    const newReviewData = {
+      title: titleData, 
+      body: bodyData,
+      rating: ratingData
+    };
+
+    fetch("/reviews", {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json"
+      }, 
+      body: JSON.stringify(newReviewData), 
+    })
+    .then((resp) => resp.json())
+    .then((reviewData) => {
+      setReviews([...reviews, reviewData])
+    })
+    .catch((error) => alert(error));
+  } 
 
   const history = useHistory();
 
@@ -35,10 +65,19 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
 
 
   const {name, description, price, image_url} = pickedItem
+
   console.log("pickedItem", pickedItem)
+    // getting reviews for item and displaying them
     const itemReviews = pickedItem.reviews.map((review) => {
-      return <li>{review.title}</li>
+      return <p><strong>Username: </strong>{review.reviewUsername} 
+        <li>
+          <strong>Title: </strong>{review.title}
+          <p>{review.body}</p>
+          <li>Rating: {review.rating} out of 5</li>
+        </li>
+      </p>
     })
+
 
     function handleDelete() {
       fetch(`items/${id}`, {
@@ -50,6 +89,11 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
         history.push("/items")
       })
       .catch((error) => alert(error))
+    }
+
+    // Getting review form
+    function addReviewForm() {
+      document.getElementById("addReviewForm").hidden = false
     }
 
 
@@ -71,10 +115,33 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
             </button>
             <button onClick={() => setEditing(true)}>Edit</button>
             <button onClick={() => handleDelete()}>Delete</button>
+            <button onClick={() => addReviewForm()}>Add Review</button>
         </div>
         <div className="hr">
           <h2 className="reviewPlacement"><strong>Reviews</strong></h2>
           {itemReviews}
+        </div>
+
+        <div id="addReviewForm" hidden>
+          <form style={{display:"flex", flexDirection:"column", width:"500px", margin:"auto"}}>
+            <label><strong>Title</strong></label>
+            <input 
+            // className='formLook, inputcolor'
+            value={titleData}
+            type="text" 
+            name="title"
+            onChange={(e) => setTitleData(e.target.value)}
+            /><br/>
+            <label><strong>Body</strong></label>
+            <input 
+            // className='formLook, inputcolor'
+            value={bodyData}
+            type="text" 
+            name="body"
+            onChange={(e) => setBodyData(e.target.value)}
+            /><br/>
+            <button onClick={handleSubmit} type="submit"></button>
+          </form>
         </div>
       </>
     )

@@ -15,6 +15,7 @@ import CreateAccount from "./CreateAccount"
 function App() {
   const [user, setUser] = useState(null);
   const [items, setItems] = useState([])
+  const [reviews, setReviews] = useState([])
 
 
   useEffect(() => {
@@ -34,6 +35,15 @@ function App() {
       }
     });
   }, []);
+
+  useEffect(() => {
+    fetch("/reviews")
+    .then((resp) => resp.json())
+    .then((reviews) => {
+      setReviews(reviews)
+    })
+    .catch((error) => alert(error))
+  },[]);
 
   
   function handleLogin(user) {
@@ -75,7 +85,7 @@ function App() {
         <AddItem items={items} setItems={setItems}/>
       </Route>
       <Route path="/items/:id">
-        <ItemDetail items={items} setItems={setItems} onDeleteItem={onDeleteItem}/>
+        <ItemDetail items={items} setItems={setItems} onDeleteItem={onDeleteItem} reviews={reviews} setReviews={setReviews}/>
       </Route>
       <Route>
         <AddReview />
