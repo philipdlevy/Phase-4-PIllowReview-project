@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import {useHistory} from "react-router-dom"
 
-function EditItem({pickedItem, setEditing, toggleItem, setToggleItem}) {
+function EditItem({pickedItem, setEditing, onUpdateItem}) {
   const [nameData, setNameData] = useState(pickedItem.name)
   const [priceData, setPriceData] = useState(pickedItem.price)
   const [descriptionData, setDescriptionData] = useState(pickedItem.description)
@@ -30,8 +30,8 @@ function EditItem({pickedItem, setEditing, toggleItem, setToggleItem}) {
     })
     .then((resp) => resp.json())
     .then(() => {
-      setToggleItem(!toggleItem)
       setEditing(false)
+      onUpdateItem(UpdatedItemData)
     })
     .catch((error) => alert(error));
   }

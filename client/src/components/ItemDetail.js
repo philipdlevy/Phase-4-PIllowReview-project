@@ -69,23 +69,21 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
   console.log("pickedItem", pickedItem)
     // getting reviews for item and displaying them
     const itemReviews = pickedItem.reviews.map((review) => {
-      return <div> 
-        <p><strong>Username: </strong>{review.user.username} 
-          <li>
+      return <div key={review.id}> 
+        <div><strong>Username: </strong>{review.user.username} 
+          <div>
             <strong>Title: </strong>{review.title}
               <p>{review.body}</p>
             <li>Rating: {review.rating} out of 5</li>
-          </li>
-        </p>
+          </div>
+        </div>
       </div>
     })
 
-
     function handleDelete() {
-      fetch(`items/${id}`, {
+      fetch(`/items/${id}`, {
         method: "DELETE"
       })
-      .then((resp) => resp.json())
       .then(() => {
         onDeleteItem(id)
         history.push("/items")
@@ -93,12 +91,17 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
       .catch((error) => alert(error))
     }
 
+    function onUpdateItem(UpdatedItemData) {
+      const itemToUpdate = items.find(item => item.id == pickedItem.id)
+      setPickedItem({...itemToUpdate, ...UpdatedItemData})
+    }
+
     // Getting review form
     function addReviewForm() {
       document.getElementById("addReviewForm").hidden = false
     }
   if (editing) {
-    return <EditItem pickedItem={pickedItem} setEditing={setEditing} toggleItems={toggleItems} setToggleItems={setToggleItems} setPickedItem={setPickedItem} />
+    return <EditItem pickedItem={pickedItem} setEditing={setEditing} setPickedItem={setPickedItem} onUpdateItem={onUpdateItem}/>
   } else {
     return (
       <>

@@ -61,6 +61,7 @@ class ItemsController < ApplicationController
     end
 
     def destroy
+        # binding.pry
         item = Item.find(params[:id])
         item.destroy
         head :no_content
