@@ -91,6 +91,7 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
       .catch((error) => alert(error))
     }
 
+    // callback function for updating item
     function onUpdateItem(UpdatedItemData) {
       const itemToUpdate = items.find(item => item.id == pickedItem.id)
       setPickedItem({...itemToUpdate, ...UpdatedItemData})
