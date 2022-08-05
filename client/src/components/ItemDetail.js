@@ -69,13 +69,10 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
   console.log("pickedItem", pickedItem)
     // getting reviews for item and displaying them
     const itemReviews = pickedItem.reviews.map((review) => {
-      return <div key={review.id}> 
+      return <div className="reviewcontainer" key={review.id}> 
         <div><strong>Username: </strong>{review.user.username} 
-          <div>
-            <strong>Title: </strong>{review.title}
-              <p>{review.body}</p>
-            <li>Rating: {review.rating} out of 5</li>
-          </div>
+            <p><strong>Rating: </strong>{review.rating} out of 5: <strong>{review.title}</strong></p>
+            <p>{review.body}</p>
         </div>
       </div>
     })
