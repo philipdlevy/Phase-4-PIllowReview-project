@@ -521,3 +521,43 @@
     margin-top: 10px;
     right: 0px;
   }
+
+  .sortItemsButton {
+    position: fixed; left: 5px; bottom: 720px;
+    background-color: #8fbc8f;
+    background-image: linear-gradient(#8fbc8f, #8fbc8f);
+    border: 1px solid #8fbc8f;
+    border-radius: 1px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-family: -apple-system,".SFNSDisplay-Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    margin: 10;
+    outline: 0;
+    padding: 5px ;
+    text-align: center;
+    transition: box-shadow .05s ease-in-out,opacity .05s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 11%;
+  }
+
+  .sortItemsButton:active {
+    box-shadow: rgba(0, 0, 0, 0.15) 0 2px 4px inset, rgba(0, 0, 0, 0.4) 0 1px 1px;
+  }
+  
+  .sortItemsButton:disabled {
+    cursor: not-allowed;
+    opacity: .6;
+  }
+  
+  .sortItemsButton:disabled:active {
+    pointer-events: none;
+  }
+  
+  .sortItemsButton:disabled:hover {
+    box-shadow: none;
+  }

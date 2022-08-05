@@ -10,7 +10,7 @@ function NavBar({user, setUser, onLogout}) {
       method: "DELETE",
     }).then(() => onLogout())
   }
-  console.log(user)
+  // console.log(user)
   return (
     <div className='container'>
       

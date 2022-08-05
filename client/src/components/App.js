@@ -30,19 +30,9 @@ function App() {
     fetch("/me").then((resp) => {
       if (resp.ok) {
         resp.json().then((user) => setUser(user));
-        console.log(user)
       }
     });
   }, []);
-
-  // useEffect(() => {
-  //   fetch("/reviews")
-  //   .then((resp) => resp.json())
-  //   .then((reviews) => {
-  //     setReviews(reviews)
-  //   })
-  //   .catch((error) => alert(error))
-  // },[]);
 
   
   function handleLogin(user) {

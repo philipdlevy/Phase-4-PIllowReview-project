@@ -39,8 +39,7 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
     })
     .then((resp) => resp.json())
     .then((reviewData) => {
-      // debugger
-      // console.log("reviewData", reviewData) item must exists error
+      debugger
       // setItems([...reviews, reviewData])
     })
     .catch((error) => alert(error));
@@ -66,7 +65,7 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
 
   const {name, description, price, image_url} = pickedItem
 
-  console.log("pickedItem", pickedItem)
+  // console.log("pickedItem", pickedItem)
     // getting reviews for item and displaying them
     const itemReviews = pickedItem.reviews.map((review) => {
       return <div className="reviewcontainer" key={review.id}> 
@@ -74,6 +73,7 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
             <p><strong>Rating: </strong>{review.rating} out of 5: <strong>{review.title}</strong></p>
             <p>{review.body}</p>
         </div>
+        <button>Delete</button>
       </div>
     })
 
