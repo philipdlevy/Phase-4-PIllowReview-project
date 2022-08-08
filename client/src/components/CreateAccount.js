@@ -19,11 +19,12 @@ function CreateAccount({setUser}) {
             }),
         }).then((resp) => {
             if (resp.ok) {
+                console.log(resp)
                 resp.json().then((user) => setUser(user));
             }
         })
     }
-
+    console.log(username)
   return (
     <div>
         <h1 className='signInStyling'>Sign Up</h1>

@@ -38,12 +38,23 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
       body: JSON.stringify(newReviewData), 
     })
     .then((resp) => resp.json())
-    .then((reviewData) => {
-      debugger
-      // setItems([...reviews, reviewData])
+    .then((itemReviewData) => {
+      // debugger
+      console.log("itemReviewData", itemReviewData)
+      // setPickedItem({...pickedItem, reviews: "itemReviewData"})
+      setPickedItem({...pickedItem, reviews: {
+        ...pickedItem.reviews, 
+        reviews: itemReviewData
+        //  itemReviewData
+      }})
     })
     .catch((error) => alert(error));
   } 
+
+  // function onUpdateItemReviews(UpdatedItemData) {
+  //   const itemToUpdate = items.find(item => item.id == pickedItem.id)
+  //   setPickedItem({...itemReviewData, ...UpdatedItemData})
+  // }
 
   let {id} = useParams();
 
@@ -63,9 +74,30 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
     }
   }, [items, toggleItems])
 
+
+  // function onDeleteReview(id) {
+  //   const updatedReviewArray = pickedItem.reviews.filter(review => review.id != parseInt(id))
+  //   setPickedItem(updatedReviewArray)
+  // }
+
+  function handleDeleteReview() {
+    fetch(`/items/${id}/reviews/${id}`, {
+      method: "DELETE"
+    })
+    .then(() => {
+      // onDeleteReview(id)
+      debugger
+      // const item = items.find((foundItem => foundItem.id == id))
+      // console.log(item)
+      const updatedReviewArray = pickedItem.reviews.filter(review => review.id != parseInt(id))
+      setPickedItem(updatedReviewArray)
+    })
+    .catch((error) => alert(error))
+  }
+
+
   const {name, description, price, image_url} = pickedItem
 
-  // console.log("pickedItem", pickedItem)
     // getting reviews for item and displaying them
     const itemReviews = pickedItem.reviews.map((review) => {
       return <div className="reviewcontainer" key={review.id}> 
@@ -73,11 +105,11 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
             <p><strong>Rating: </strong>{review.rating} out of 5: <strong>{review.title}</strong></p>
             <p>{review.body}</p>
         </div>
-        <button>Delete</button>
+        <button onClick={() => handleDeleteReview()}>Delete</button>
       </div>
     })
 
-    function handleDelete() {
+    function handleDeleteItem() {
       fetch(`/items/${id}`, {
         method: "DELETE"
       })
@@ -87,6 +119,7 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
       })
       .catch((error) => alert(error))
     }
+
 
     // callback function for updating item
     function onUpdateItem(UpdatedItemData) {
@@ -98,6 +131,7 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
     function addReviewForm() {
       document.getElementById("addReviewForm").hidden = false
     }
+
   if (editing) {
     return <EditItem pickedItem={pickedItem} setEditing={setEditing} setPickedItem={setPickedItem} onUpdateItem={onUpdateItem}/>
   } else {
@@ -115,7 +149,7 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
               Back
             </button>
             <button onClick={() => setEditing(true)}>Edit</button>
-            <button onClick={() => handleDelete()}>Delete</button>
+            <button onClick={() => handleDeleteItem()}>Delete</button>
             <button onClick={() => addReviewForm()}>Add Review</button>
         </div>
         <div className="hr">
@@ -123,6 +157,7 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
           {itemReviews}
         </div>
 
+        {/* Adding a review Form */}
         <div id="addReviewForm" hidden>
           <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column", width:"500px", margin:"auto"}}>
             <label><strong>Title</strong></label>
@@ -155,3 +190,21 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
 }
 
 export default ItemDetail
+
+
+
+// const updated = {
+//   ...user, 
+//   department: {
+//       ...user.department, 
+//       'number': 7
+//   }
+// };
+
+// return { 
+//   ...state, 
+//   loginForm: {
+//       ...state.loginForm,
+//       email: action.payload.email
+//   } 
+// }
