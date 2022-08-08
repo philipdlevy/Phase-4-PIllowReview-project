@@ -5,8 +5,6 @@ import NavBar from "./NavBar"
 import HomePage from "./HomePage"
 import AddItem from "./AddItem"
 import ItemDetail from "./ItemDetail"
-import AddReview from "./AddReview"
-import EditReview from "./EditReview"
 import ItemLister from "./ItemLister"
 import ContactUs from "./ContactUs"
 import Login from "./Login"
@@ -15,7 +13,6 @@ import CreateAccount from "./CreateAccount"
 function App() {
   const [user, setUser] = useState(null);
   const [items, setItems] = useState([])
-  const [reviews, setReviews] = useState([])
 
   useEffect(() => {
     fetch("/items")
@@ -73,15 +70,8 @@ function App() {
         <AddItem items={items} setItems={setItems}/>
       </Route>
       <Route path="/items/:id">
-        <ItemDetail items={items} setItems={setItems} onDeleteItem={onDeleteItem} reviews={reviews} setReviews={setReviews}/>
+        <ItemDetail items={items} setItems={setItems} onDeleteItem={onDeleteItem}/>
       </Route>
-      <Route>
-        <AddReview />
-      </Route>
-      <Route>
-        <EditReview />
-      </Route>
-      
       <Route exact path="/">
         <HomePage />
       </Route>

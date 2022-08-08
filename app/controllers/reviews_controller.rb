@@ -50,21 +50,22 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
+        binding.pry
         user = User.find_by(id: session[:user_id])
         item = Item.find(params[:item_id])
-        if user
-            userReview = user.reviews.find(params[:id])
-            itemReview = item.reviews.find(params[:id])
-            if review.valid?
-        # review = Review.find(params[:id])
-            review.destroy
-            head :no_content
-            else
-                render json: {errors: review.errors.full_messages}, status: :unprocessable_entity
-            end
-        else
-            render json: {errors: ["Unauthorized"]}, status: :unauthorized
-        end
+        # if user
+        #     userReview = user.reviews.find(params[:id])
+        #     itemReview = item.reviews.find(params[:id])
+        #     review = Review.find(params[:id])
+        #     if review.valid?
+        #     review.destroy
+        #     head :no_content
+        #     else
+        #         render json: {errors: review.errors.full_messages}, status: :unprocessable_entity
+        #     end
+        # else
+        #     render json: {errors: ["Unauthorized"]}, status: :unauthorized
+        # end
     end
 
 
