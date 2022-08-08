@@ -42,7 +42,7 @@ function App() {
 
   function onDeleteItem(id) {
     const updatedItemArray = items.filter(item => item.id != parseInt(id))
-    setItems( updatedItemArray)
+    setItems(updatedItemArray)
   }
 
 

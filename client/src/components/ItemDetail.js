@@ -4,7 +4,7 @@ import {useHistory, useParams} from "react-router-dom"
 import EditItem from "./EditItem"
 
 
-function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}) {
+function ItemDetail({items, setItems, onDeleteItem}) {
   const [titleData, setTitleData] = useState("")
   const [bodyData, setBodyData] = useState("")
   const [ratingData, setRatingData] = useState("")
@@ -18,7 +18,27 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
     reviews: []
   })
 
+  let {id} = useParams();
   const history = useHistory();
+
+
+  // Used for selecting a specific item and displaying it
+  useEffect(() => {
+    const item = items.find((foundItem => foundItem.id == id))
+    if (item) {
+      setPickedItem(item)
+      
+    } else {
+      setPickedItem({
+        name: "", 
+        price: 0, 
+        description: "", 
+        image_url: "", 
+        reviews: []
+      })
+    }
+  }, [items])
+  
 
   //Creating a review
   function handleSubmit(e) {
@@ -41,38 +61,13 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
     .then((itemReviewData) => {
       // debugger
       console.log("itemReviewData", itemReviewData)
-      // setPickedItem({...pickedItem, reviews: "itemReviewData"})
-      setPickedItem({...pickedItem, reviews: {
-        ...pickedItem.reviews, 
-        reviews: itemReviewData
-        //  itemReviewData
-      }})
+      // setPickedItem({...pickedItem, reviews: {
+      //   ...pickedItem.reviews, 
+      //   reviews: itemReviewData
+      // }})
     })
     .catch((error) => alert(error));
   } 
-
-  // function onUpdateItemReviews(UpdatedItemData) {
-  //   const itemToUpdate = items.find(item => item.id == pickedItem.id)
-  //   setPickedItem({...itemReviewData, ...UpdatedItemData})
-  // }
-
-  let {id} = useParams();
-
-  useEffect(() => {
-    const item = items.find((foundItem => foundItem.id == id))
-    if (item) {
-      setPickedItem(item)
-      
-    } else {
-      setPickedItem({
-        name: "", 
-        price: 0, 
-        description: "", 
-        image_url: "", 
-        reviews: []
-      })
-    }
-  }, [items, toggleItems])
 
 
   // function onDeleteReview(id) {
@@ -89,8 +84,8 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
       debugger
       // const item = items.find((foundItem => foundItem.id == id))
       // console.log(item)
-      const updatedReviewArray = pickedItem.reviews.filter(review => review.id != parseInt(id))
-      setPickedItem(updatedReviewArray)
+      // const updatedReviewArray = pickedItem.reviews.filter(review => review.id != parseInt(id))
+      // setPickedItem(updatedReviewArray)
     })
     .catch((error) => alert(error))
   }
@@ -109,6 +104,7 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
       </div>
     })
 
+    // Deleting an item
     function handleDeleteItem() {
       fetch(`/items/${id}`, {
         method: "DELETE"
@@ -127,7 +123,7 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
       setPickedItem({...itemToUpdate, ...UpdatedItemData})
     }
 
-    // Getting review form
+    // Showing the review form
     function addReviewForm() {
       document.getElementById("addReviewForm").hidden = false
     }
@@ -157,7 +153,7 @@ function ItemDetail({items, setItems, toggleItems, setToggleItems, onDeleteItem}
           {itemReviews}
         </div>
 
-        {/* Adding a review Form */}
+        {/* The review Form */}
         <div id="addReviewForm" hidden>
           <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column", width:"500px", margin:"auto"}}>
             <label><strong>Title</strong></label>
