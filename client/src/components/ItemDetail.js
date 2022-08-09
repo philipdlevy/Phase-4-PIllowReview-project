@@ -72,19 +72,6 @@ function ItemDetail({items, setItems, onDeleteItem}) {
 
   const {name, description, price, image_url} = pickedItem
 
-  // getting reviews for item and displaying them
-  const itemReviews = pickedItem.reviews.map((review) => {
-    // debugger
-    return <div className="reviewcontainer" key={review.id}> 
-        <div><strong>Username: </strong>{review.user.username} 
-          <p><strong>Rating: </strong>{review.rating} out of 5: <strong>{review.title}</strong></p>
-          <p>{review.body}</p>
-        </div>
-        <button onClick={(event) => handleDeleteReview(event, review.id)}>Delete</button>
-      </div>
-  })
-  
-
   function handleDeleteReview(event, id) {
     // debugger
     fetch(`/reviews/${id}`, {
@@ -94,13 +81,23 @@ function ItemDetail({items, setItems, onDeleteItem}) {
       // debugger
       let updatedReviewArray = pickedItem.reviews.filter(review => review.id != id)
       console.log(updatedReviewArray)
-      // setPickedItem(updatedReviewArray)
+      setPickedItem(...itemReviews, updatedReviewArray)
     })
     .catch((error) => alert(error))
   }
 
 
-    // Item review shown here
+    // getting reviews for item and displaying them
+    const itemReviews = pickedItem.reviews.map((review) => {
+      // debugger
+      return <div className="reviewcontainer" key={review.id}> 
+          <div><strong>Username: </strong>{review.user.username} 
+            <p><strong>Rating: </strong>{review.rating} out of 5: <strong>{review.title}</strong></p>
+            <p>{review.body}</p>
+          </div>
+          <button onClick={(event) => handleDeleteReview(event, review.id)}>Delete</button>
+        </div>
+    })
 
     // Deleting an item
     function handleDeleteItem() {
@@ -186,19 +183,3 @@ function ItemDetail({items, setItems, onDeleteItem}) {
 export default ItemDetail
 
 
-
-// const updated = {
-//   ...user, 
-//   department: {
-//       ...user.department, 
-//       'number': 7
-//   }
-// };
-
-// return { 
-//   ...state, 
-//   loginForm: {
-//       ...state.loginForm,
-//       email: action.payload.email
-//   } 
-// }

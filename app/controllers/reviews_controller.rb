@@ -70,6 +70,7 @@ class ReviewsController < ApplicationController
         # itemReview = item.reviews.find_by(id: params[:id])
         # itemReview.destroy
         review = Review.find(params[:id])
+        review.destroy
         head :no_content
     end
 
