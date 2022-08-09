@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
     end
 
     def show
-        review = Review.find(params[:id])
+        review = Review.find_by(id: params[:id])
         if review
             render json: review
         else
@@ -50,9 +50,9 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
-        binding.pry
-        user = User.find_by(id: session[:user_id])
-        item = Item.find(params[:item_id])
+        # binding.pry
+        # user = User.find_by(id: session[:user_id])
+        # item = Item.find(params[:item_id])
         # if user
         #     userReview = user.reviews.find(params[:id])
         #     itemReview = item.reviews.find(params[:id])
@@ -66,6 +66,11 @@ class ReviewsController < ApplicationController
         # else
         #     render json: {errors: ["Unauthorized"]}, status: :unauthorized
         # end
+        # item = Item.find(params[:id])
+        # itemReview = item.reviews.find_by(id: params[:id])
+        # itemReview.destroy
+        review = Review.find(params[:id])
+        head :no_content
     end
 
 

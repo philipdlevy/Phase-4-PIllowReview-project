@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :reviews, only: [:show, :index, :create, :destroy, :update] 
   resources :items, only: [:show, :index, :create, :destroy, :update] do
     resources :reviews, only: [:show, :index, :create, :destroy, :update]
   end
   resources :users, only: [:index, :show, :create]
+  resources :reviews, only: [:show, :index, :create, :destroy, :update] 
 
   ### Custom routes
 

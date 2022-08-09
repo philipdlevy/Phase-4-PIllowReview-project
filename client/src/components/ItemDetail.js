@@ -37,7 +37,7 @@ function ItemDetail({items, setItems, onDeleteItem}) {
         reviews: []
       })
     }
-  }, [items])
+  }, [id, items])
   
 
   //Creating a review
@@ -60,49 +60,47 @@ function ItemDetail({items, setItems, onDeleteItem}) {
     .then((resp) => resp.json())
     .then((itemReviewData) => {
       // debugger
-      console.log("itemReviewData", itemReviewData)
+      // console.log("itemReviewData", itemReviewData)
       // setPickedItem({...pickedItem, reviews: {
       //   ...pickedItem.reviews, 
       //   reviews: itemReviewData
       // }})
+      setPickedItem(itemReviewData)
     })
     .catch((error) => alert(error));
   } 
 
+  const {name, description, price, image_url} = pickedItem
 
-  // function onDeleteReview(id) {
-  //   const updatedReviewArray = pickedItem.reviews.filter(review => review.id != parseInt(id))
-  //   setPickedItem(updatedReviewArray)
-  // }
+  // getting reviews for item and displaying them
+  const itemReviews = pickedItem.reviews.map((review) => {
+    // debugger
+    return <div className="reviewcontainer" key={review.id}> 
+        <div><strong>Username: </strong>{review.user.username} 
+          <p><strong>Rating: </strong>{review.rating} out of 5: <strong>{review.title}</strong></p>
+          <p>{review.body}</p>
+        </div>
+        <button onClick={(event) => handleDeleteReview(event, review.id)}>Delete</button>
+      </div>
+  })
+  
 
-  function handleDeleteReview() {
-    fetch(`/items/${id}/reviews/${id}`, {
+  function handleDeleteReview(event, id) {
+    // debugger
+    fetch(`/reviews/${id}`, {
       method: "DELETE"
     })
     .then(() => {
-      // onDeleteReview(id)
-      debugger
-      // const item = items.find((foundItem => foundItem.id == id))
-      // console.log(item)
-      // const updatedReviewArray = pickedItem.reviews.filter(review => review.id != parseInt(id))
+      // debugger
+      let updatedReviewArray = pickedItem.reviews.filter(review => review.id != id)
+      console.log(updatedReviewArray)
       // setPickedItem(updatedReviewArray)
     })
     .catch((error) => alert(error))
   }
 
 
-  const {name, description, price, image_url} = pickedItem
-
-    // getting reviews for item and displaying them
-    const itemReviews = pickedItem.reviews.map((review) => {
-      return <div className="reviewcontainer" key={review.id}> 
-        <div><strong>Username: </strong>{review.user.username} 
-            <p><strong>Rating: </strong>{review.rating} out of 5: <strong>{review.title}</strong></p>
-            <p>{review.body}</p>
-        </div>
-        <button onClick={() => handleDeleteReview()}>Delete</button>
-      </div>
-    })
+    // Item review shown here
 
     // Deleting an item
     function handleDeleteItem() {
