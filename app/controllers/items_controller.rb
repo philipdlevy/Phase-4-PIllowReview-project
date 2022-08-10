@@ -16,6 +16,7 @@ class ItemsController < ApplicationController
     end
 
     def show
+        # binding.pry
         item = Item.find_by(id: params[:id])
         if item
             render json: item
@@ -42,8 +43,17 @@ class ItemsController < ApplicationController
     end
 
 
-    
-
+    # custom route to get items belonging to a user
+    def filter
+        # binding.pry
+        user = User.find_by(id: session[:user_id])
+        if user
+            filteredItems = user.items.uniq
+            render json: filteredItems
+        else
+            render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
+        end
+    end
 
     def create
         item = Item.create!(item_params)

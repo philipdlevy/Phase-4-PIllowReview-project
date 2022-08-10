@@ -24,9 +24,9 @@ class ReviewsController < ApplicationController
     end
 
     def create
-        # binding.pry
+        binding.pry
         user = User.find_by(id: session[:user_id])
-        #New line 
+        # New line 
         item = Item.find(params[:item_id])
         if user
             review = user.reviews.create(review_params)
@@ -40,6 +40,9 @@ class ReviewsController < ApplicationController
             render json: {errors: ["Unauthorized"]}, status: :unauthorized
         end
     end
+
+        ########################
+
 
     def update 
         review = Review.find(params[:id])

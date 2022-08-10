@@ -59,45 +59,45 @@ function ItemDetail({items, setItems, onDeleteItem}) {
     })
     .then((resp) => resp.json())
     .then((itemReviewData) => {
-      // debugger
+      debugger
       // console.log("itemReviewData", itemReviewData)
       // setPickedItem({...pickedItem, reviews: {
       //   ...pickedItem.reviews, 
       //   reviews: itemReviewData
       // }})
-      setPickedItem(itemReviewData)
+      setPickedItem(...pickedItem.reviews, itemReviewData)
     })
     .catch((error) => alert(error));
   } 
 
   const {name, description, price, image_url} = pickedItem
 
-  function handleDeleteReview(event, id) {
-    // debugger
+  function handleDeleteReview(event, id, itemReviews) {
+    debugger
     fetch(`/reviews/${id}`, {
       method: "DELETE"
     })
     .then(() => {
       // debugger
-      let updatedReviewArray = pickedItem.reviews.filter(review => review.id != id)
-      console.log(updatedReviewArray)
-      setPickedItem(...itemReviews, updatedReviewArray)
+      pickedItem.reviews = pickedItem.reviews.filter(review => review.id != id)
+      setPickedItem(pickedItem)
     })
     .catch((error) => alert(error))
   }
 
-
-    // getting reviews for item and displaying them
-    const itemReviews = pickedItem.reviews.map((review) => {
-      // debugger
-      return <div className="reviewcontainer" key={review.id}> 
-          <div><strong>Username: </strong>{review.user.username} 
-            <p><strong>Rating: </strong>{review.rating} out of 5: <strong>{review.title}</strong></p>
-            <p>{review.body}</p>
-          </div>
-          <button onClick={(event) => handleDeleteReview(event, review.id)}>Delete</button>
+  
+  // getting reviews for item and displaying them
+  const itemReviews = pickedItem.reviews.map((review) => {
+    // debugger
+    return <div className="reviewcontainer" key={review.id}> 
+        <div><strong>Username: </strong>{review.user.username} 
+          <p><strong>Rating: </strong>{review.rating} out of 5: <strong>{review.title}</strong></p>
+          <p>{review.body}</p>
         </div>
-    })
+        <button onClick={(event) => handleDeleteReview(event, review.id)}>Delete</button>
+      </div>
+  })
+
 
     // Deleting an item
     function handleDeleteItem() {

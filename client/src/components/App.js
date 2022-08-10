@@ -64,7 +64,7 @@ function App() {
       </Route>
 
       <Route exact path="/items">
-        <ItemLister items={items}/>
+        <ItemLister items={items} setItems={setItems}/>
       </Route>
       <Route path="/items/new">
         <AddItem items={items} setItems={setItems}/>
