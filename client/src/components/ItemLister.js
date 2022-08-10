@@ -4,15 +4,17 @@ import {Link} from 'react-router-dom'
 import ItemCard from "./ItemCard"
 
 function ItemLister({items, setItems}) {
-  const [filteredItems, setFilteredItems] = useState([])
+  // const [filteredItems, setFilteredItems] = useState([])
 
   function handleFilter() {
     fetch("/filter").then((resp) => {
       if (resp.ok) {
-        console.log(resp)
         resp.json().then((filteredItems) => setItems(filteredItems))
+      } else {
+        sortingError()
       }
     })
+    .catch((error) => alert(error))
   }
 
 
@@ -37,25 +39,25 @@ function ItemLister({items, setItems}) {
   // const orderedItemNames = orders.filter(order => order.item != null).map(order => order.item.name);
 
 
-  
-    // fetch("/filter")
-    // .then((resp) => resp.json())
-    // .then((items) => {
-    //   setItems(items)
-    // })
-    // .catch((error) => alert(error))
-
-
   const itemsArray = items.map((item) => {
     return <ItemCard key={item.id} itemObj={item} />
   })
 
 
+  // Showing login to see items you have reviewed
+  function sortingError() {
+    document.getElementById("sortingError").hidden = false
+  }
+
   return (
-    <div>
-      <ul>{itemsArray}</ul>
-      <button onClick={(event) => handleFilter(event)} className='sortItemsButton'>See your reviewed items</button>
-    </div>
+    <>
+      <div>
+        <ul>{itemsArray}</ul>
+        <button 
+          onClick={(event) => handleFilter(event)} className='sortItemsButton'>See items you have reviewed</button>
+      </div>
+      <p id="sortingError" hidden>(Sign in to see items)</p>
+  </>
   )
 }
 

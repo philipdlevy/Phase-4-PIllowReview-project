@@ -23,18 +23,6 @@ class UsersController < ApplicationController
         end
     end
 
-
-    # def usersFilteredItems
-        # binding.pry
-        # user = User.find_by(id: session[:user_id])
-        # if user.valid?
-        #     render json: user.items
-        # else
-        #     render json: {error: "Not authorized"}, status: :unauthorized
-        # end
-        # users.second.reviews.first.item
-    # end
-
     private
 
     def user_params

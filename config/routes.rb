@@ -19,7 +19,6 @@ Rails.application.routes.draw do
 
   get "/filter", to: "items#filter"
 
-  # get "/filter", to: "users#usersFilteredItems"
 
 
   # Routing logic: fallback requests for React Router.

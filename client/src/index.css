@@ -470,6 +470,19 @@
   /* incorrect username or password */
 
 
+  p#sortingError {
+    position: absolute;
+    font-family: sans-serif;
+    font-size: 20px;
+    line-height: 0px;
+    padding: 10px;
+    color: rgb(169, 115, 115);
+    left: 220px;
+    top: 107px;
+    width: 200px;
+    background: #fff;
+  }
+
 
   .reviewPlacement {
     position: absolute;
