@@ -1,22 +1,38 @@
-import React, {useState} from 'react'
-import {Link} from 'react-router-dom' 
+import React, {useEffect, useState} from 'react'
+import {Link, useHistory} from 'react-router-dom' 
 
 import ItemCard from "./ItemCard"
 
-function ItemLister({items, setItems}) {
+function ItemLister({items, setItems, user}) {
   // const [filteredItems, setFilteredItems] = useState([])
+  const [displayItems, setDisplayItems] = useState([])
 
-  function handleFilter() {
-    fetch("/filter").then((resp) => {
-      if (resp.ok) {
-        resp.json().then((filteredItems) => setItems(filteredItems))
-      } else {
-        sortingError()
-      }
-    })
-    .catch((error) => alert(error))
+  const history = useHistory();
+
+  useEffect(() => {
+    setDisplayItems(items)
+  
+  }, [items])
+
+  // function handleFilter() {
+  //   fetch("/filter").then((resp) => {
+  //     if (resp.ok) {
+  //       resp.json().then((filteredItems) => setItems(filteredItems))
+  //     } else {
+  //       sortingError()
+  //     }
+  //   })
+  //   .catch((error) => alert(error))
+  // }
+
+  function handleFilter(e) {
+    setDisplayItems(user.items)
+  } 
+
+  // Showing login to see items you have reviewed
+  function sortingError() {
+    document.getElementById("sortingError").hidden = false
   }
-
 
   // const filteredItemsToDisplay = items.filter((item) => {
   //   console.log("filtered items", item)
@@ -39,15 +55,13 @@ function ItemLister({items, setItems}) {
   // const orderedItemNames = orders.filter(order => order.item != null).map(order => order.item.name);
 
 
-  const itemsArray = items.map((item) => {
+  // item.reviews.map((review) => review.user.username)
+
+
+  const itemsArray = displayItems.map((item) => {
+    console.log(item.id)
     return <ItemCard key={item.id} itemObj={item} />
   })
-
-
-  // Showing login to see items you have reviewed
-  function sortingError() {
-    document.getElementById("sortingError").hidden = false
-  }
 
   return (
     <>

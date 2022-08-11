@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
-import {Link} from 'react-router-dom' 
+import {Link, useHistory} from 'react-router-dom' 
 
 function CreateAccount({setUser}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+
+    const history = useHistory();
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -19,16 +21,17 @@ function CreateAccount({setUser}) {
             }),
         }).then((resp) => {
             if (resp.ok) {
-                console.log(resp)
-                resp.json().then((user) => setUser(user));
+                // resp.json().then((user) => setUser(user));
+                history.push("/login")
             }
         })
+        .catch((error) => alert(error))
     }
-    console.log(username)
+
   return (
     <div>
         <h1 className='signInStyling'>Sign Up</h1>
-        <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column", width:"350px", margin:"auto"}}>
+        <form style={{display:"flex", flexDirection:"column", width:"350px", margin:"auto"}}>
             <strong>Username</strong>
             <input 
                 type="text"
@@ -45,9 +48,7 @@ function CreateAccount({setUser}) {
                 onChange={(e) => setPassword(e.target.value)}
             />
             <br></br>
-            <Link to="login">
-                <button type="submit">Create Account</button>
-            </Link>
+                <button onClick={(e) => handleSubmit(e)} type="submit">Create Account</button>
             <br></br>
             <Link to="/login">
                 <button>Back</button>

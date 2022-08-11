@@ -26,6 +26,7 @@ function ItemDetail({items, setItems, onDeleteItem}) {
   useEffect(() => {
     const item = items.find((foundItem => foundItem.id == id))
     if (item) {
+      // debugger
       setPickedItem(item)
       
     } else {
@@ -38,12 +39,14 @@ function ItemDetail({items, setItems, onDeleteItem}) {
       })
     }
   }, [id, items])
+
+
   
 
   //Creating a review
-  function handleSubmit(e) {
+  function handleReviewSubmit(e) {
     e.preventDefault(); 
-
+    debugger
     const newReviewData = {
       title: titleData, 
       body: bodyData,
@@ -58,14 +61,15 @@ function ItemDetail({items, setItems, onDeleteItem}) {
       body: JSON.stringify(newReviewData), 
     })
     .then((resp) => resp.json())
-    .then((itemReviewData) => {
+    .then((newReview) => {
       debugger
       // console.log("itemReviewData", itemReviewData)
       // setPickedItem({...pickedItem, reviews: {
       //   ...pickedItem.reviews, 
       //   reviews: itemReviewData
       // }})
-      setPickedItem(...pickedItem.reviews, itemReviewData)
+      // const itemReviews = pickedItem.reviews
+      setPickedItem({...pickedItem, reviews: newReview})
     })
     .catch((error) => alert(error));
   } 
@@ -73,30 +77,31 @@ function ItemDetail({items, setItems, onDeleteItem}) {
   const {name, description, price, image_url} = pickedItem
 
   function handleDeleteReview(event, id, itemReviews) {
-    debugger
+    // debugger
     fetch(`/reviews/${id}`, {
       method: "DELETE"
     })
     .then(() => {
       // debugger
-      pickedItem.reviews = pickedItem.reviews.filter(review => review.id != id)
-      setPickedItem(pickedItem)
+      const newReviewsArray = pickedItem.reviews.filter(review => review.id != id)
+      setPickedItem({...pickedItem, reviews: newReviewsArray})
     })
     .catch((error) => alert(error))
   }
 
   
   // getting reviews for item and displaying them
-  const itemReviews = pickedItem.reviews.map((review) => {
-    // debugger
-    return <div className="reviewcontainer" key={review.id}> 
-        <div><strong>Username: </strong>{review.user.username} 
-          <p><strong>Rating: </strong>{review.rating} out of 5: <strong>{review.title}</strong></p>
-          <p>{review.body}</p>
+    const itemReviews = pickedItem.reviews.map((review) => {
+      // debugger
+      return <div className="reviewcontainer" key={review.id}> 
+          <div><strong>Username: </strong>{review.user.username} 
+            <p><strong>Rating: </strong>{review.rating} out of 5: <strong>{review.title}</strong></p>
+            <p>{review.body}</p>
+          </div>
+          <button onClick={(event) => handleDeleteReview(event, review.id)}>Delete</button>
         </div>
-        <button onClick={(event) => handleDeleteReview(event, review.id)}>Delete</button>
-      </div>
-  })
+    })
+  
 
 
     // Deleting an item
@@ -150,7 +155,7 @@ function ItemDetail({items, setItems, onDeleteItem}) {
 
         {/* The review Form */}
         <div id="addReviewForm" hidden>
-          <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column", width:"500px", margin:"auto"}}>
+          <form style={{display:"flex", flexDirection:"column", width:"500px", margin:"auto"}}>
             <label><strong>Title</strong></label>
             <input 
             value={titleData}
@@ -172,7 +177,7 @@ function ItemDetail({items, setItems, onDeleteItem}) {
             name="rating"
             onChange={(e) => setRatingData(e.target.value)}
             /><br/>
-            <input type="submit"></input>
+            <button onClick={(e) => handleReviewSubmit(e)} type="submit">Create Review</button>
           </form>
         </div>
       </>

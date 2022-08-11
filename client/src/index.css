@@ -1,7 +1,7 @@
 .backgroundPicture {
     background-attachment: fixed;
     position: absolute;
-    background-repeat:repeat;
+    background-repeat: repeat;
     top: 0;
     left: 0;
     right: 0;
@@ -15,7 +15,6 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-
 }
 
 .container {
@@ -572,5 +571,49 @@
   }
   
   .sortItemsButton:disabled:hover {
+    box-shadow: none;
+  }
+
+
+  /* Sign out button */
+  .button-29 {
+    background-color: #8fbc8f;
+    background-image: linear-gradient(#8fbc8f, #8fbc8f);
+    border: 1px solid #8fbc8f;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-family: -apple-system,".SFNSDisplay-Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 17px;
+    line-height: 380%;
+    margin: 0;
+    outline: 0;
+    padding: 11px 15px 12px;
+    text-align: center;
+    transition: box-shadow .05s ease-in-out,opacity .05s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 8%;
+    position: fixed; right: 0px;
+  }
+  
+  
+  .button-29:active {
+    box-shadow: rgba(0, 0, 0, 0.15) 0 2px 4px inset, rgba(0, 0, 0, 0.4) 0 1px 1px;
+  }
+  
+  .button-29:disabled {
+    cursor: not-allowed;
+    opacity: .6;
+  }
+  
+  .button-29:disabled:active {
+    pointer-events: none;
+  }
+  
+  .button-29:disabled:hover {
     box-shadow: none;
   }

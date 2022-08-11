@@ -26,9 +26,15 @@ function NavBar({user, setUser, onLogout}) {
         <button className="button-27" >Add Item</button>
       </NavLink>
 
-      <NavLink to="/login">
+      {/* If there's a user, show signout button, if no user, show login/signup. link is to go to front page when signing out */}
+      {user ? 
+      <Link to="/">
+        <button className="button-29" onClick={handleLogout}>SignOut</button>
+      </Link>
+      : <NavLink to="/login">
         <button className="button-25" >SignIn/Up</button>
-      </NavLink> 
+      </NavLink>}
+
 
       <NavLink to="/items">
         <button className="button-28" >See All Items</button>
@@ -36,9 +42,6 @@ function NavBar({user, setUser, onLogout}) {
 
       <div className="welcomeMessage">
         {user ? <h2>Welcome,  {user.username}!</h2> : null }
-      </div>
-      <div>
-        {user ? <button className="signOutButton" onClick={handleLogout}>SignOut</button> : null }
       </div>
     </div>
   );
