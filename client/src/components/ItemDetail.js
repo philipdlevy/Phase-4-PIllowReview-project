@@ -4,7 +4,7 @@ import {useHistory, useParams} from "react-router-dom"
 import EditItem from "./EditItem"
 
 
-function ItemDetail({items, setItems, onDeleteItem}) {
+function ItemDetail({items, setItems, onDeleteItem, user}) {
   const [titleData, setTitleData] = useState("")
   const [bodyData, setBodyData] = useState("")
   const [ratingData, setRatingData] = useState("")
@@ -76,13 +76,13 @@ function ItemDetail({items, setItems, onDeleteItem}) {
 
   const {name, description, price, image_url} = pickedItem
 
-  function handleDeleteReview(event, id, itemReviews) {
+  function handleDeleteReview(event, id) {
     // debugger
     fetch(`/reviews/${id}`, {
       method: "DELETE"
     })
     .then(() => {
-      // debugger
+      debugger
       const newReviewsArray = pickedItem.reviews.filter(review => review.id != id)
       setPickedItem({...pickedItem, reviews: newReviewsArray})
     })
@@ -123,9 +123,10 @@ function ItemDetail({items, setItems, onDeleteItem}) {
       setPickedItem({...itemToUpdate, ...UpdatedItemData})
     }
 
-    // Showing the review form
+    // Showing the review form, based on being signed in
     function addReviewForm() {
-      document.getElementById("addReviewForm").hidden = false
+      user ? document.getElementById("addReviewForm").hidden = false :
+      document.getElementById("signInToLeaveReview").hidden = false
     }
 
   if (editing) {
@@ -155,7 +156,8 @@ function ItemDetail({items, setItems, onDeleteItem}) {
 
         {/* The review Form */}
         <div id="addReviewForm" hidden>
-          <form style={{display:"flex", flexDirection:"column", width:"500px", margin:"auto"}}>
+          <form className="reviewForm">
+            <h4>Add a review</h4>
             <label><strong>Title</strong></label>
             <input 
             value={titleData}
@@ -163,22 +165,32 @@ function ItemDetail({items, setItems, onDeleteItem}) {
             name="title"
             onChange={(e) => setTitleData(e.target.value)}
             /><br/>
-            <label><strong>Body</strong></label>
-            <input 
-            value={bodyData}
-            type="text" 
-            name="body"
-            onChange={(e) => setBodyData(e.target.value)}
-            /><br/>
             <label><strong>Rating: 1 out of 5</strong></label>
             <input 
             value={ratingData}
             type="text" 
             name="rating"
-            onChange={(e) => setRatingData(e.target.value)}
+            onChange={(e) => setRatingData(e.target.value)}/>
+            <br></br>
+            <label><strong>Body: (150 characters maximum)</strong></label>
+            <textarea maxLength={150} className="bodyReviewForm"
+            value={bodyData}
+            type="text" 
+            name="body"
+            onChange={(e) => setBodyData(e.target.value)}
             /><br/>
-            <button onClick={(e) => handleReviewSubmit(e)} type="submit">Create Review</button>
+            <button onClick={(e) => handleReviewSubmit(e)} type="submit">Create Review</button> 
           </form>
+        </div>
+
+
+        {/* Can't leave review without signing in error */}
+        <div id="signInToLeaveReview" hidden>
+          <div class="alert-heading">
+          </div>
+          <div class="inner-msg">
+            <p>Please sign in or create account to leave a review</p>
+          </div>
         </div>
       </>
     )

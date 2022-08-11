@@ -70,7 +70,7 @@ function App() {
         <AddItem items={items} setItems={setItems}/>
       </Route>
       <Route path="/items/:id">
-        <ItemDetail items={items} setItems={setItems} onDeleteItem={onDeleteItem}/>
+        <ItemDetail items={items} setItems={setItems} onDeleteItem={onDeleteItem} user={user}/>
       </Route>
       <Route exact path="/">
         <HomePage />
