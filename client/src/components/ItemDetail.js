@@ -46,7 +46,7 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
   //Creating a review
   function handleReviewSubmit(e) {
     e.preventDefault(); 
-    debugger
+    // debugger
     const newReviewData = {
       title: titleData, 
       body: bodyData,
@@ -62,14 +62,9 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
     })
     .then((resp) => resp.json())
     .then((newReview) => {
-      debugger
-      // console.log("itemReviewData", itemReviewData)
-      // setPickedItem({...pickedItem, reviews: {
-      //   ...pickedItem.reviews, 
-      //   reviews: itemReviewData
-      // }})
       // const itemReviews = pickedItem.reviews
-      setPickedItem({...pickedItem, reviews: newReview})
+      pickedItem.reviews.push(newReview)
+      setPickedItem({...pickedItem})
     })
     .catch((error) => alert(error));
   } 
@@ -77,14 +72,23 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
   const {name, description, price, image_url} = pickedItem
 
   function handleDeleteReview(event, id) {
-    // debugger
     fetch(`/reviews/${id}`, {
       method: "DELETE"
     })
     .then(() => {
-      debugger
-      const newReviewsArray = pickedItem.reviews.filter(review => review.id != id)
-      setPickedItem({...pickedItem, reviews: newReviewsArray})
+
+      // First way of deleting and updating state
+      // const newReviewsArray = pickedItem.reviews.filter(review => review.id != id)
+      // setPickedItem({...pickedItem, reviews: newReviewsArray})
+
+      // Second way to write it
+      pickedItem.reviews = pickedItem.reviews.filter(review => review.id != id)
+      setPickedItem({...pickedItem})
+
+      // 3rd way to write it 
+      // const newValuesArray = pickedItem.reviews.filter(review => review.id != id)
+      // pickedItem.reviews = newValuesArray
+      // setPickedItem({...pickedItem})
     })
     .catch((error) => alert(error))
   }
@@ -101,7 +105,6 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
           <button onClick={(event) => handleDeleteReview(event, review.id)}>Delete</button>
         </div>
     })
-  
 
 
     // Deleting an item
@@ -120,7 +123,12 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
     // callback function for updating item
     function onUpdateItem(UpdatedItemData) {
       const itemToUpdate = items.find(item => item.id == pickedItem.id)
-      setPickedItem({...itemToUpdate, ...UpdatedItemData})
+      // Old way to update //
+      // setPickedItem({...itemToUpdate, ...UpdatedItemData})
+      // New way to update //
+      const updatedItem = {...itemToUpdate, ...UpdatedItemData}
+      setPickedItem({...updatedItem})
+      setItems()
     }
 
     // Showing the review form, based on being signed in
