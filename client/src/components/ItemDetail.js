@@ -40,13 +40,9 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
     }
   }, [id, items])
 
-
-  
-
   //Creating a review
   function handleReviewSubmit(e) {
     e.preventDefault(); 
-    // debugger
     const newReviewData = {
       title: titleData, 
       body: bodyData,
@@ -128,7 +124,29 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
       // New way to update //
       const updatedItem = {...itemToUpdate, ...UpdatedItemData}
       setPickedItem({...updatedItem})
-      setItems()
+
+      // This is updating the items state in app
+      // const index = items.findIndex(item => item.id == updatedItem.id)
+      // items[index] = {...updatedItem}
+      // setItems([...items])
+
+      items = items.map(item => {
+        if (item.id == updatedItem.id) {
+          return {...updatedItem}
+        }
+        return item
+      })
+      setItems([...items])
+
+
+
+      // const index = items.findIndex(item => item.id == updatedItem.id)
+
+      // const updatedItem = {...items[index], ...UpdatedItemData}
+      // setPickedItem({...updatedItem})
+
+      // items[index] = updatedItem
+      // setItems([...items])
     }
 
     // Showing the review form, based on being signed in

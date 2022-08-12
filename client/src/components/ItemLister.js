@@ -6,12 +6,12 @@ import ItemCard from "./ItemCard"
 function ItemLister({items, setItems, user}) {
   // const [filteredItems, setFilteredItems] = useState([])
   const [displayItems, setDisplayItems] = useState([])
+  const [toggle, setToggle] = useState(false)
 
   const history = useHistory();
 
   useEffect(() => {
     setDisplayItems(items)
-  
   }, [items])
 
   // function handleFilter() {
@@ -26,7 +26,12 @@ function ItemLister({items, setItems, user}) {
   // }
 
   function handleFilter(e) {
-    setDisplayItems(user.items)
+    setToggle(!toggle)
+    if (toggle) {
+      setDisplayItems({...user.items})
+    } else {
+      setDisplayItems([...items])
+    }
   } 
 
   // Showing login to see items you have reviewed
@@ -59,7 +64,6 @@ function ItemLister({items, setItems, user}) {
 
 
   const itemsArray = displayItems.map((item) => {
-    console.log(item.id)
     return <ItemCard key={item.id} itemObj={item} />
   })
 
