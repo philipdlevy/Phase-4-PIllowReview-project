@@ -33,14 +33,13 @@ function ItemLister({items, setItems, user}) {
 
 
   function handleFilter(e) {
-    // debugger
     setToggleItems(!toggleItems)
     if (toggleItems) {
       const updatedItems = [...user.items]
       setDisplayItems(updatedItems)
     } else {
       setDisplayItems([...items])
-    }
+    } 
   } 
 
   // Showing login to see items you have reviewed

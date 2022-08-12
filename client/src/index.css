@@ -198,6 +198,10 @@
     box-shadow: none;
   }
 
+  /* Buttons */
+
+
+
   .contactinfo {
     position: fixed; bottom: 550px;
     position: fixed; bottom: 400px;
@@ -214,9 +218,9 @@
   }
 
   .formLook {
-    color: aliceblue;
+    /* color: aliceblue; */
     border: 2px #485461 solid;
-    background-color: transparent;
+    /* background-color: transparent; */
     cursor: pointer;
   }
 
@@ -228,8 +232,8 @@
 
   .inputcolor {
     color: rgb(1, 3, 5);
-    filter: brightness(200%);
-    background-color: transparent;
+    /* filter: brightness(200%); */
+    /* background-color: transparent; */
   }
 
   .signInStyling {
@@ -658,3 +662,8 @@
     line-height: 1em; */
     word-wrap: break-all;
   }
+
+
+
+
+

@@ -4,6 +4,7 @@ function ContactUs() {
   return (
     <div className='contactinfo'>
         <h1 className='underline'>About</h1>
+
             <p>
               Welcome to our pillow review page! This is a place to leave reviews for pillows that you have tried to give potential customers an idea of how the product works before purchase. 
             </p>

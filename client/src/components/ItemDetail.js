@@ -61,6 +61,11 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
       // const itemReviews = pickedItem.reviews
       pickedItem.reviews.push(newReview)
       setPickedItem({...pickedItem})
+
+      document.getElementById("addReviewForm").hidden = true
+      setTitleData("")
+      setBodyData("")
+      setRatingData("")
     })
     .catch((error) => alert(error));
   } 
@@ -137,8 +142,6 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
         return item
       })
       setItems([...items])
-
-
 
       // const index = items.findIndex(item => item.id == updatedItem.id)
 
