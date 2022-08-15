@@ -49,4 +49,3 @@ function NavBar({user, setUser, onLogout}) {
 
 export default NavBar
 
-// role="button" after class for buttons, only a space, no commas

@@ -9,6 +9,7 @@ function EditItem({pickedItem, setEditing, onUpdateItem}) {
 
   const history = useHistory();
 
+  const backupImg = "https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482930.jpg"
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -17,9 +18,15 @@ function EditItem({pickedItem, setEditing, onUpdateItem}) {
       name: nameData, 
       price: priceData, 
       description: descriptionData, 
-      image_url: image_urlData
+      image_url: image_urlData || backupImg
     };
-    
+
+    if (nameData.trim() === "" || priceData.trim() === "" || descriptionData.trim === "") {
+      return alert("Missing Data")   
+    }
+    if (descriptionData.length < 25) {
+      return alert("Description must be 25 characters or more")
+    }
 
     fetch(`/items/${pickedItem.id}`, {
       method: "PATCH", 

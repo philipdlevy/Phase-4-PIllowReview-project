@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {Link, useHistory} from 'react-router-dom' 
 
-function CreateAccount({setUser}) {
+function CreateAccount() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -10,6 +10,12 @@ function CreateAccount({setUser}) {
 
     function handleSubmit(e) {
         e.preventDefault();
+
+        // Can't let password or username be blank. If they aren't, run fetch.
+        if (username.trim() === "" || password.trim() === "") {
+            return document.getElementById("CreatingAccount-error-alert").hidden = false   
+          }
+
         fetch("/signup", {
             method: "POST", 
             headers: {
@@ -20,8 +26,10 @@ function CreateAccount({setUser}) {
                 password
             }),
         }).then((resp) => {
-            if (resp.ok) {
-                // resp.json().then((user) => setUser(user));
+            if (resp.status == 422) {
+                document.getElementById("usernameTaken-error-alert").hidden = false
+            } 
+            else if (resp.ok) {
                 history.push("/login")
             }
         })
@@ -54,6 +62,21 @@ function CreateAccount({setUser}) {
                 <button>Back</button>
             </Link>
         </form>
+
+        <div id="CreatingAccount-error-alert" hidden>
+          <div className="alert-heading">
+          </div>
+          <div className="inner-msg">
+                <p>Username and or Password can't be blank</p>
+          </div>
+        </div>
+        <div id="usernameTaken-error-alert" hidden>
+          <div className="alert-heading">
+          </div>
+          <div className="inner-msg">
+                <p>Username is already taken, try another one.</p>
+          </div>
+        </div>
 
     </div>
   )

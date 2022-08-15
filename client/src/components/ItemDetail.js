@@ -22,6 +22,8 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
   const history = useHistory();
 
 
+
+
   // Used for selecting a specific item and displaying it
   useEffect(() => {
     const item = items.find((foundItem => foundItem.id == id))
@@ -43,6 +45,11 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
   //Creating a review
   function handleReviewSubmit(e) {
     e.preventDefault(); 
+
+    if (titleData.trim() === "" || bodyData.trim() === "" || ratingData.trim === "") {
+      return alert("Missing Data")   
+    }
+
     const newReviewData = {
       title: titleData, 
       body: bodyData,
@@ -215,9 +222,9 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
 
         {/* Can't leave review without signing in error */}
         <div id="signInToLeaveReview" hidden>
-          <div class="alert-heading">
+          <div className="alert-heading">
           </div>
-          <div class="inner-msg">
+          <div className="inner-msg">
             <p>Please sign in or create account to leave a review</p>
           </div>
         </div>

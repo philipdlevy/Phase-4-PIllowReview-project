@@ -67,7 +67,7 @@ function App() {
         <ItemLister items={items} setItems={setItems} user={user}/>
       </Route>
       <Route path="/items/new">
-        <AddItem items={items} setItems={setItems}/>
+        <AddItem items={items} setItems={setItems} user={user}/>
       </Route>
       <Route path="/items/:id">
         <ItemDetail items={items} setItems={setItems} onDeleteItem={onDeleteItem} user={user}/>
@@ -77,9 +77,9 @@ function App() {
       </Route>
 
       <Route>
-        <h1>
+        <h1 style={{textAlign: "center"}} className="fontcolor" >
           <strong>404</strong>
-          <h3><strong>ERROR! PAGE NOT FOUND</strong></h3>
+          <h3 className="fontcolor"><strong>ERROR! PAGE NOT FOUND!</strong></h3>
         </h1>
       </Route>
 

@@ -3,8 +3,7 @@ import {Link, useHistory} from 'react-router-dom'
 
 import ItemCard from "./ItemCard"
 
-function ItemLister({items, setItems, user}) {
-  const [filteredItems, setFilteredItems] = useState([])
+function ItemLister({items, user}) {
   const [displayItems, setDisplayItems] = useState([])
   const [toggleItems, setToggleItems] = useState(true)
 
@@ -29,8 +28,6 @@ function ItemLister({items, setItems, user}) {
   // if (displayItems.length === 0) {
   //   setDisplayItems(items)
   // }
-
-
 
   function handleFilter(e) {
     setToggleItems(!toggleItems)
