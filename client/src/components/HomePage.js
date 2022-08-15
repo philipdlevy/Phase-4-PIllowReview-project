@@ -5,14 +5,17 @@ function HomePage() {
   return ( 
 
   <div>
-    <p className='homepageText'>Pillow reviews</p>
-    <br></br>
-    <Link to="/items">
-      <button className='homepageButton1'>See All Items</button>
-    </Link>
-    <Link to="/login">
-      <button className='homepageButton2'>Login or Create Account</button>
-    </Link>
+    <div>
+      <p className='homepageText'>Pillow reviews</p>
+    </div>
+    <div className='buttonContainer'>
+      <Link to="/items">
+        <button className='homepageButton1'>See All Items</button>
+      </Link>
+      <Link to="/login">
+        <button className='homepageButton2'>Login or Create Account</button>
+      </Link>
+    </div>
   </div>
   )
 }

@@ -47,7 +47,7 @@ function App() {
 
 
   return (
-    <div className="backgroundPicture">
+    <div>
       <NavBar user={user} setUser={setUser} onLogout={handleLogout}/>
       <Switch>
 
