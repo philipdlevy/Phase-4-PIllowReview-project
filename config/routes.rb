@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
 
-  get "/filter", to: "items#filter"
+  # get "/filter", to: "items#filter"
 
 
 

@@ -70,6 +70,7 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
       setPickedItem({...pickedItem})
 
       document.getElementById("addReviewForm").hidden = true
+      // Settign form back to blank
       setTitleData("")
       setBodyData("")
       setRatingData("")

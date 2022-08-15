@@ -30,6 +30,12 @@ function ItemLister({items, user}) {
   // }
 
   function handleFilter(e) {
+    // if no user, run sorting error method
+    if (!user) {
+      sortingError()
+    }
+
+
     setToggleItems(!toggleItems)
     if (toggleItems) {
       const updatedItems = [...user.items]
