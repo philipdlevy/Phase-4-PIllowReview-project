@@ -13,28 +13,11 @@ function ItemLister({items, user}) {
     setDisplayItems(items)
   }, [items])
 
-  // const usersItems = user.items
-
-  // function handleFilter() {
-  //   fetch("/filter").then((resp) => {
-  //     if (resp.ok) {
-  //       resp.json().then((filteredItems) => setItems(filteredItems))
-  //     } else {
-  //       sortingError()
-  //     }
-  //   })
-  //   .catch((error) => alert(error))
-  // }
-  // if (displayItems.length === 0) {
-  //   setDisplayItems(items)
-  // }
-
   function handleFilter(e) {
     // if no user, run sorting error method
     if (!user) {
       sortingError()
     }
-
 
     setToggleItems(!toggleItems)
     if (toggleItems) {
