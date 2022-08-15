@@ -39,14 +39,19 @@ function ItemLister({items, user}) {
   })
 
   return (
-    <>
-      <div>
-        <ul>{itemsArray}</ul>
-        <button 
-          onClick={(event) => handleFilter(event)} className='sortItemsButton'>See items you have reviewed</button>
+    <div>
+      <div className="sortItemsButtonDiv">
+        <button className='sortItemsButton' onClick={(event) => handleFilter(event)}>
+          See items you have reviewed
+        </button>
       </div>
-      <p id="sortingError" hidden>(Sign in to see items)</p>
-  </>
+      <div className='itemsDiv'>
+       {itemsArray}
+      </div>
+      <div>
+        <p id="sortingError" hidden>(Sign in to see items)</p>
+      </div>
+    </div>
   )
 }
 

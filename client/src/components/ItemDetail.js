@@ -46,15 +46,17 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
   function handleReviewSubmit(e) {
     e.preventDefault(); 
 
+    
     if (titleData.trim() === "" || bodyData.trim() === "" || ratingData.trim === "") {
       return alert("Missing Data")   
     }
-
+    
     const newReviewData = {
       title: titleData, 
       body: bodyData,
       rating: ratingData
     };
+    
 
     fetch(`/items/${id}/reviews`, {
       method: "POST", 
@@ -105,7 +107,6 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
   
   // getting reviews for item and displaying them
     const itemReviews = pickedItem.reviews.map((review) => {
-      // debugger
       return <div className="reviewcontainer" key={review.id}> 
           <div><strong>Username: </strong>{review.user.username} 
             <p><strong>Rating: </strong>{review.rating} out of 5: <strong>{review.title}</strong></p>
@@ -170,13 +171,12 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
     return <EditItem pickedItem={pickedItem} setEditing={setEditing} setPickedItem={setPickedItem} onUpdateItem={onUpdateItem}/>
   } else {
     return (
-      <>
+      <div>
         <div className='polaroidDetail'>
           <img className='imgSize' src={image_url}></img>
           <h3 className='underline'>{name}</h3>
           <p><strong>Price:</strong> {price}</p>
           <p><strong>Description:</strong> 
-            <br></br>
             {description}
           </p>
             <button onClick={() => history.push("/items")}>
@@ -229,7 +229,7 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
             <p>Please sign in or create account to leave a review</p>
           </div>
         </div>
-      </>
+      </div>
     )
   }
 }

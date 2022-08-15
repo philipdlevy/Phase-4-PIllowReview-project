@@ -10,7 +10,7 @@ function NavBar({user, setUser, onLogout}) {
       method: "DELETE",
     }).then(() => onLogout())
   }
-  // console.log(user)
+
   return (
     <div className='container'>
       <div>
@@ -18,12 +18,16 @@ function NavBar({user, setUser, onLogout}) {
           <h1 className='text'>| Welcome to Phil's Pillow Reviews |</h1>
         </Link>
 
-        <NavLink to="/contact">
-          <button className="button-26" >Contact Us</button>
-        </NavLink>
+        <NavLink to="/items">
+          <button className="button-28" >See All Items</button>
+        </NavLink> 
 
         <NavLink to="/items/new">
           <button className="button-27" >Add Item</button>
+        </NavLink> 
+
+        <NavLink to="/contact">
+          <button className="button-26" >Contact Us</button>
         </NavLink>
 
         {/* If there's a user, show signout button, if no user, show login/signup. link is to go to front page when signing out */}
@@ -32,14 +36,8 @@ function NavBar({user, setUser, onLogout}) {
           <button className="button-29" onClick={handleLogout}>SignOut</button>
         </Link>
         : <NavLink to="/login">
-          <button className="button-25" >SignIn/Up</button>
+            <button className="button-25" >SignIn/Up</button>
         </NavLink>}
-
-
-        <NavLink to="/items">
-          <button className="button-28" >See All Items</button>
-        </NavLink>
-
       </div>
 
       <div className="welcomeMessage">
