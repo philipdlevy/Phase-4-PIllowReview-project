@@ -21,16 +21,17 @@ function ItemLister({items, user}) {
 
     setToggleItems(!toggleItems)
     if (toggleItems) {
+      // users items array. has duplicates
       const updatedItems = [...user.items]
-      // converting each item to its id
+      // map items and converting each item to its id number
       const arr = updatedItems.map((item) => item.id)
-      // Getting each index
+      // Getting each index. filters the id's and gets the unique ones. 
       const filteredArray = arr.filter(function(item, pos){
         return arr.indexOf(item)== pos
       });
       // then filtering through the indexed array and getting a list of items that has the unique id. 
       const uniqueItems = items.filter((item) => filteredArray.includes(item.id))
-      // Then set items to the users items which is now filtered
+      // Then set items to the users items which is now filtered and unique
       setDisplayItems(uniqueItems)
     } else {
       setDisplayItems([...items])
@@ -44,7 +45,7 @@ function ItemLister({items, user}) {
 
 
   const itemsArray = displayItems.map((item) => {
-    return <ItemCard itemObj={item} />
+    return <ItemCard key={item.id} itemObj={item} />
   })
 
   return (

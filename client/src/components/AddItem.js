@@ -94,8 +94,3 @@ function AddItem({items, setItems, user}) {
 }
 
 export default AddItem
-
-
-// var filteredArray = arr.filter(function(item, pos){
-//   return arr.indexOf(item)== pos; 
-// });
