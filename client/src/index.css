@@ -45,7 +45,7 @@ a {
   /* line-height: 380%; */
   /* margin: 0;
   outline: 0; */
-  padding: 11px 15px 12px;
+  /* padding: 11px 15px 12px; */
   text-align: center;
   transition: box-shadow .05s ease-in-out,opacity .05s ease-in-out;
   user-select: none;
@@ -54,10 +54,6 @@ a {
   flex: 1;
   width: 120px;
   height: 90px;
-  /* margin-left: 1800px;
-  margin-top: -94px; */
-  margin-left: 1800px;
-  margin-top: -200px;
 }
 
 
@@ -92,7 +88,7 @@ a {
   /* line-height: 380%; */
   /* margin: 0;
   outline: 0; */
-  padding: 11px 15px 12px;
+  /* padding: 11px 15px 12px; */
   text-align: center;
   transition: box-shadow .05s ease-in-out,opacity .05s ease-in-out;
   user-select: none;
@@ -103,8 +99,9 @@ a {
   height: 90px;
   /* margin-left: 1610px; */
   /* margin-top: -55px; */
-  margin-left: 1600px;
-  margin-top: -110px;
+  /* margin-left: 1600px;
+  margin-top: -110px; */
+  margin-right: 25px;
   }
 
   .button-26:active {
@@ -138,7 +135,7 @@ a {
     /* line-height: 380%; */
     /* margin: 0;
     outline: 0; */
-    padding: 11px 15px 12px;
+    /* padding: 11px 15px 12px; */
     text-align: center;
     transition: box-shadow .05s ease-in-out,opacity .05s ease-in-out;
     user-select: none;
@@ -149,8 +146,10 @@ a {
     height: 90px;
     /* margin-left: 1366px;
     margin-top: -85px; */
-    margin-left: 1400px;
-    margin-top: -90px;
+    /* margin-left: 1400px;
+    margin-top: -90px; */
+    margin-right: 25px;
+
   }
 
   .button-27:active {
@@ -184,7 +183,7 @@ a {
     /* line-height: 380%; */
     /* margin: 0;
     outline: 0; */
-    padding: 11px 15px 12px;
+    /* padding: 11px 15px 12px; */
     text-align: center;
     transition: box-shadow .05s ease-in-out,opacity .05s ease-in-out;
     user-select: none;
@@ -195,8 +194,11 @@ a {
     height: 90px;
     /* margin-left: 1166px;
     margin-top: -68px; */
-    margin-left: 1200px;
-    margin-top: -70px;
+    /* margin-left: 1200px;
+    margin-top: -70px; */
+    margin-left: 1300px;
+    margin-right: 25px;
+
   }
 
   .button-28:active {
@@ -649,7 +651,7 @@ a {
     /* line-height: 380%; */
     /* margin: 0;
     outline: 0; */
-    padding: 11px 15px 12px;
+    /* padding: 11px 15px 12px; */
     text-align: center;
     transition: box-shadow .05s ease-in-out,opacity .05s ease-in-out;
     user-select: none;
@@ -658,8 +660,6 @@ a {
     flex: 1;
     width: 120px;
     height: 90px;
-    margin-left: 1800px;
-    margin-top: -94px;
   }
   
   

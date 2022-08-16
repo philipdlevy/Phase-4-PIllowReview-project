@@ -28,7 +28,6 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
   useEffect(() => {
     const item = items.find((foundItem => foundItem.id == id))
     if (item) {
-      // debugger
       setPickedItem(item)
       
     } else {
@@ -45,7 +44,6 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
   //Creating a review
   function handleReviewSubmit(e) {
     e.preventDefault(); 
-
     
     if (titleData.trim() === "" || bodyData.trim() === "" || ratingData.trim === "") {
       return alert("Missing Data")   

@@ -7,8 +7,8 @@ function EditItem({pickedItem, setEditing, onUpdateItem}) {
   const [descriptionData, setDescriptionData] = useState(pickedItem.description)
   const [image_urlData, setImage_urlData] = useState(pickedItem.image_url)
 
-  const history = useHistory();
-  let {id} = useParams();
+  // const history = useHistory();
+  // let {id} = useParams();
 
   const backupImg = "https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482930.jpg"
 
