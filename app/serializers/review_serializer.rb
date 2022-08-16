@@ -8,6 +8,6 @@ class ReviewSerializer < ActiveModel::Serializer
 
   def user
     user = User.find(self.object.user_id)
-    user 
+    {id: user.id, username: user.username}
   end
 end

@@ -22,7 +22,16 @@ function ItemLister({items, user}) {
     setToggleItems(!toggleItems)
     if (toggleItems) {
       const updatedItems = [...user.items]
-      setDisplayItems(updatedItems)
+      // converting each item to its id
+      const arr = updatedItems.map((item) => item.id)
+      // Getting each index
+      const filteredArray = arr.filter(function(item, pos){
+        return arr.indexOf(item)== pos
+      });
+      // then filtering through the indexed array and getting a list of items that has the unique id. 
+      const uniqueItems = items.filter((item) => filteredArray.includes(item.id))
+      // Then set items to the users items which is now filtered
+      setDisplayItems(uniqueItems)
     } else {
       setDisplayItems([...items])
     } 

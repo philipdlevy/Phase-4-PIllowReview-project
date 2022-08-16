@@ -1,4 +1,4 @@
-This is my frontend and backend for my pillow review application. The objective of this project is to showcase the work I did in Flatiron School. In this project, once you have created an account, you can create a pillow item that you and others can leave reviews on. You can see all of the items anyone has created or see the items only you have left reviews on. 
+This is my frontend and backend for my pillow review application. The objective of this project is to showcase the work I did in Flatiron School for my fourth project. In this project, once you have created an account, you can create a pillow item that you and others can leave reviews on. You can see all of the items anyone has created or see the items only you have left reviews on. 
 
 # Requirements
 * node version v16.13.1
