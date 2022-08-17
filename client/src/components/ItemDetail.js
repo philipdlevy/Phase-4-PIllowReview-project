@@ -52,8 +52,10 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
       rating: ratingData
     };
     
-    
-    if (titleData.trim() === "" || bodyData.trim() === "" || ratingData.trim() === "") {
+    if (ratingData > 5 || ratingData < 1) {
+      return alert("Rating must be a number between 1 and 5")
+    }
+    if (titleData.trim() === "" || bodyData.trim() === "" || ratingData.trim() === "" ) {
       return alert("Missing Data")   
     } else {
 

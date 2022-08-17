@@ -59,7 +59,7 @@ function AddItem({items, setItems, user}) {
         <input 
         className='formLook, inputcolor'
         value={nameData}
-        type="number" 
+        type="text" 
         name="title"
         onChange={(e) => setNameData(e.target.value)}
         /><br/>
@@ -67,7 +67,7 @@ function AddItem({items, setItems, user}) {
         <input 
         className='formLook, inputcolor'
         value={priceData}
-        type="text" 
+        type="number" 
         name="price"
         onChange={(e) => setPriceData(e.target.value)}
         /><br/>
