@@ -9,7 +9,6 @@ This is my frontend and backend for my pillow review application. The objective 
 * Fork and clone respository, then run "bundle install" for gem dependencies. 
 * Then run "rails s" to start server.
 
-
 ### For frontend
 * Run "npm install --prefix client"
 * Then run "npm start --prefix client" to start the application on http://localhost:4000
