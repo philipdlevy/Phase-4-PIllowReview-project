@@ -21,8 +21,10 @@ function EditItem({pickedItem, setEditing, onUpdateItem}) {
       description: descriptionData, 
       image_url: image_urlData || backupImg
     };
+    console.log(priceData)
+    debugger
 
-    if (nameData.trim() === "" || priceData.trim() === "" || descriptionData.trim === "") {
+    if (nameData.trim() === "" || priceData.length === 0 || descriptionData.trim() === "") {
       return alert("Missing Data")   
     }
     if (descriptionData.length < 25) {
@@ -62,7 +64,7 @@ function EditItem({pickedItem, setEditing, onUpdateItem}) {
         <input 
           className='formLook, inputcolor'
           value={priceData}
-          type="text" 
+          type='number' 
           name="price"
           onChange={(e) => setPriceData(e.target.value)}
         /><br/>

@@ -45,9 +45,6 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
   function handleReviewSubmit(e) {
     e.preventDefault(); 
     
-    if (titleData.trim() === "" || bodyData.trim() === "" || ratingData.trim === "") {
-      return alert("Missing Data")   
-    }
     
     const newReviewData = {
       title: titleData, 
@@ -55,27 +52,32 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
       rating: ratingData
     };
     
+    
+    if (titleData.trim() === "" || bodyData.trim() === "" || ratingData.trim() === "") {
+      return alert("Missing Data")   
+    } else {
 
-    fetch(`/items/${id}/reviews`, {
-      method: "POST", 
-      headers: {
-        "Content-Type": "application/json"
-      }, 
-      body: JSON.stringify(newReviewData), 
-    })
-    .then((resp) => resp.json())
-    .then((newReview) => {
-      // const itemReviews = pickedItem.reviews
-      pickedItem.reviews.push(newReview)
-      setPickedItem({...pickedItem})
-
-      document.getElementById("addReviewForm").hidden = true
-      // Settign form back to blank
-      setTitleData("")
-      setBodyData("")
-      setRatingData("")
-    })
-    .catch((error) => alert(error));
+      fetch(`/items/${id}/reviews`, {
+        method: "POST", 
+        headers: {
+          "Content-Type": "application/json"
+        }, 
+        body: JSON.stringify(newReviewData), 
+      })
+      .then((resp) => resp.json())
+      .then((newReview) => {
+        // const itemReviews = pickedItem.reviews
+        pickedItem.reviews.push(newReview)
+        setPickedItem({...pickedItem})
+  
+        document.getElementById("addReviewForm").hidden = true
+        // Settign form back to blank
+        setTitleData("")
+        setBodyData("")
+        setRatingData("")
+      })
+      .catch((error) => alert(error));
+    }
   } 
 
   const {name, description, price, image_url} = pickedItem
