@@ -45,7 +45,6 @@ function ItemDetail({items, setItems, onDeleteItem, user}) {
   function handleReviewSubmit(e) {
     e.preventDefault(); 
     
-    
     const newReviewData = {
       title: titleData, 
       body: bodyData,
