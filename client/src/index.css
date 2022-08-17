@@ -2,6 +2,10 @@ a {
   text-decoration: none;
 }
 
+body {
+  margin: 0px;
+}
+
 .backgroundPicture {
     background-repeat: repeat;
     margin: auto;
@@ -16,11 +20,11 @@ a {
 }
 
 .container {
-    width: 1920px;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    width: 100%;
     height: 90px;
-    /* margin: 0 auto; */
-    margin-top: -22px;
-    margin-left: -8px;
     background-color: rgba(255,255,255,0.5);
 }
 
@@ -192,11 +196,6 @@ a {
     flex: 1;
     width: 120px;
     height: 90px;
-    /* margin-left: 1166px;
-    margin-top: -68px; */
-    /* margin-left: 1200px;
-    margin-top: -70px; */
-    margin-left: 1300px;
     margin-right: 25px;
 
   }
@@ -369,9 +368,10 @@ a {
   } */
 
   .welcomeMessage {
-    position: fixed; right: 15px; bottom: 730px;
-    text-align: center;
+    text-align: right;
     text-decoration: underline;
+    margin-right: 5px;
+    
   }
 
   .signOutButton {
@@ -845,6 +845,12 @@ a {
   
   .homepageButton2:disabled:hover {
     box-shadow: none;
+  }
+
+  .navButtons {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
   }
 
 

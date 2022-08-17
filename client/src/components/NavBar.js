@@ -13,10 +13,15 @@ function NavBar({user, setUser, onLogout}) {
 
   return (
     <div className='container'>
-      <div>
+      <div className="homeLink">
         <Link to="/">
-          <h1 className='text'>| Welcome to Phil's Pillow Reviews |</h1>
+          <div>
+            <h1 className='text'>| Welcome to Phil's Pillow Reviews |</h1>
+          </div>
         </Link>
+      </div>
+      <div className="navButtons">
+        
 
         <NavLink to="/items">
           <button className="button-28" >See All Items</button>
@@ -40,9 +45,9 @@ function NavBar({user, setUser, onLogout}) {
         </NavLink>}
       </div>
 
-      <div className="welcomeMessage">
+      {/* <div className="welcomeMessage">
         {user ? <h2>Welcome,  {user.username}!</h2> : null }
-      </div>
+      </div> */}
     </div>
   );
 }

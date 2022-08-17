@@ -49,6 +49,9 @@ function App() {
   return (
     <div>
       <NavBar user={user} setUser={setUser} onLogout={handleLogout}/>
+      <div className="welcomeMessage">
+        {user ? <h2>Welcome,  {user.username}!</h2> : null }
+      </div>
       <Switch>
 
       <Route exact path="/contact">
