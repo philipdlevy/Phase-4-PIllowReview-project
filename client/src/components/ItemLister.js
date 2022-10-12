@@ -6,7 +6,6 @@ import ItemCard from "./ItemCard"
 function ItemLister({items, user, setItems}) {
   const [displayItems, setDisplayItems] = useState([])
   const [toggleItems, setToggleItems] = useState(true)
-  const [highestRatedItems, setHighestRatedItems] = useState([])
 
   const history = useHistory();
 
@@ -45,13 +44,13 @@ function ItemLister({items, user, setItems}) {
   }
 
 
-  function displayHighestRatedItems(e) {
-    fetch("/highestRatedItems")
-      .then((resp) => resp.json())
-      .then((higherRatedItems) => {
-        setItems(higherRatedItems)
-      })
-  }
+  // function displayHighestRatedItems(e) {
+  //   fetch("/highestRatedItems")
+  //     .then((resp) => resp.json())
+  //     .then((higherRatedItems) => {
+  //       setItems(higherRatedItems)
+  //     })
+  // }
 
 
 
@@ -63,7 +62,7 @@ function ItemLister({items, user, setItems}) {
   return (
     <div>
       <div className="sortItemsButtonDiv">
-        <button onClick={(e) => displayHighestRatedItems(e)}>Button</button>
+        {/* <button onClick={(e) => displayHighestRatedItems(e)}>Button</button> */}
         <button className='sortItemsButton' onClick={(event) => handleFilter(event)}>
           See items you have reviewed
         </button>
