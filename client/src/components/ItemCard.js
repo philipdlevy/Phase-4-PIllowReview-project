@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom'
 function ItemCard({itemObj}) {
   const {id, name, description, price, image_url} = itemObj
 
+  
+
 
   return (
     <div className='polaroid'>

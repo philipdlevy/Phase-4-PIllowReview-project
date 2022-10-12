@@ -3,9 +3,10 @@ import {Link, useHistory} from 'react-router-dom'
 
 import ItemCard from "./ItemCard"
 
-function ItemLister({items, user}) {
+function ItemLister({items, user, setItems}) {
   const [displayItems, setDisplayItems] = useState([])
   const [toggleItems, setToggleItems] = useState(true)
+  const [highestRatedItems, setHighestRatedItems] = useState([])
 
   const history = useHistory();
 
@@ -44,6 +45,17 @@ function ItemLister({items, user}) {
   }
 
 
+  function displayHighestRatedItems(e) {
+    fetch("/highestRatedItems")
+      .then((resp) => resp.json())
+      .then((higherRatedItems) => {
+        setItems(higherRatedItems)
+      })
+  }
+
+
+
+
   const itemsArray = displayItems.map((item) => {
     return <ItemCard key={item.id} itemObj={item} />
   })
@@ -51,6 +63,7 @@ function ItemLister({items, user}) {
   return (
     <div>
       <div className="sortItemsButtonDiv">
+        <button onClick={(e) => displayHighestRatedItems(e)}>Button</button>
         <button className='sortItemsButton' onClick={(event) => handleFilter(event)}>
           See items you have reviewed
         </button>

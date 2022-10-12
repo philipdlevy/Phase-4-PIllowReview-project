@@ -23,23 +23,6 @@ class ItemsController < ApplicationController
         else
             render json: {error: "Item Not Found"}, status: :not_found
         end
-
-
-        # if params[:item_id]
-        #     item = Item.find(params[:item_id])
-        #     reviews = item.reviews
-        # else
-        #     reviews = Review.all
-        # end
-        # render json: reviews
-
-        # if params[:item_id]
-        #     item = Item.find(params[:item_id])
-        #     reviews = item.reviews
-        # else
-        #     reviews = Review.all
-        # end
-        # render json: reviews
     end
 
 
@@ -54,6 +37,15 @@ class ItemsController < ApplicationController
     #         render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
     #     end
     # end
+
+    def highestRatedItems
+        # binding.pry
+        underTwentyItems = Item.where('price < 20.00')
+        render json: underTwentyItems
+    end
+
+    # Book.where('id > 10').limit(20).order('id desc').only(:order, :where)
+
 
     def create
         item = Item.create!(item_params)

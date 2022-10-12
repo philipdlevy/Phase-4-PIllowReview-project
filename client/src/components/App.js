@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react"
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch } from 'react-router-dom'
 
 import NavBar from "./NavBar"
 import HomePage from "./HomePage"
@@ -40,11 +40,11 @@ function App() {
     setUser(null)
   }
 
+
   function onDeleteItem(id) {
     const updatedItemArray = items.filter(item => item.id != parseInt(id))
     setItems(updatedItemArray)
   }
-
 
   return (
     <div>
