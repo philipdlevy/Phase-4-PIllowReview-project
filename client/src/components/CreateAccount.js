@@ -25,11 +25,14 @@ function CreateAccount() {
                 username, 
                 password
             }),
-        }).then((resp) => {
-            if (resp.status == 422) {
+        })
+        .then((resp) => resp.json())
+        .then((user) => {
+            console.log(user)
+            if (user.status == 422) {
                 document.getElementById("usernameTaken-error-alert").hidden = false
             } 
-            else if (resp.ok) {
+            else if (user.ok) {
                 history.push("/login")
             }
         })
