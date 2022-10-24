@@ -67,18 +67,18 @@ function Login({onLogin, login}) {
         </form>
 
         <div id="error-alert" hidden>
-          <div class="alert-heading">
-          </div>
-          <div class="inner-msg">
+        <div class="alert-heading">
+        </div>
+        <div class="inner-msg">
                 <p>Username and or Password can't be blank</p>
-          </div>
+        </div>
         </div>
         <div id="error-alert2" hidden>
-          <div class="alert-heading">
-          </div>
-          <div class="inner-msg">
+        <div class="alert-heading">
+        </div>
+        <div class="inner-msg">
                 <p>Invalid Username or Password</p>
-          </div>
+        </div>
         </div>
     </div>
   )

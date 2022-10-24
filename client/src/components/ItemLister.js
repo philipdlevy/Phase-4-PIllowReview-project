@@ -6,6 +6,8 @@ import ItemCard from "./ItemCard"
 function ItemLister({items, user, setItems}) {
   const [displayItems, setDisplayItems] = useState([])
   const [toggleItems, setToggleItems] = useState(true)
+  console.log("display", displayItems)
+  console.log("toggle", toggleItems)
 
   const history = useHistory();
 
