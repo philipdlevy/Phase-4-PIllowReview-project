@@ -28,11 +28,10 @@ function CreateAccount() {
         })
         .then((resp) => resp.json())
         .then((user) => {
-            console.log(user)
             if (user.status == 422) {
                 document.getElementById("usernameTaken-error-alert").hidden = false
             } 
-            else if (user.ok) {
+            else {
                 history.push("/login")
             }
         })
